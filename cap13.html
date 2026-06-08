@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El Aprendiz Experto - Cap 13 - Como Extraer las Reglas de un Tema</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AE</span>
+      <span class="brand-text">
+        <strong>El Aprendiz Experto</strong>
+        <span>Manuscrito HTML</span>
+      </span>
+    </a>
+    <div class="current-title">Cap 13 - Como Extraer las Reglas de un Tema</div>
+  </header>
+  <div class="progress-track"><div class="progress-bar"></div></div>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Capitulos">
+      <h2 class="side-heading">Indice</h2>
+      <section class="nav-section">
+  <h2 class="nav-section-title">Base</h2>
+  <ul class="chapter-list">
+    <li><a href="cap01.html"><span class="cap-prefix">Cap 1 -</span> La Ilusion de Aprendizaje</a></li>
+<li><a href="cap02.html"><span class="cap-prefix">Cap 2 -</span> La Maquina Que Aprende</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 0 - Uso</h2>
+  <ul class="chapter-list">
+    <li><a href="cap03.html"><span class="cap-prefix">Cap 3 -</span> Tu Cerebro y la IA Cuando Algo Importa</a></li>
+<li><a href="cap04.html"><span class="cap-prefix">Cap 4 -</span> La Evidencia Detras del Uso</a></li>
+<li><a href="cap05.html"><span class="cap-prefix">Cap 5 -</span> Como Encontrar el Uso de Cualquier Tema</a></li>
+<li><a href="cap06.html"><span class="cap-prefix">Cap 6 -</span> Case Studies: Cuando el Tema Por Fin Importa</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 1 - Mapa</h2>
+  <ul class="chapter-list">
+    <li><a href="cap07.html"><span class="cap-prefix">Cap 7 -</span> Tu Cerebro y la IA Frente al Caos</a></li>
+<li><a href="cap08.html"><span class="cap-prefix">Cap 8 -</span> La Evidencia Detras del Mapa</a></li>
+<li><a href="cap09.html"><span class="cap-prefix">Cap 9 -</span> Como Mapear Cualquier Tema</a></li>
+<li><a href="cap10.html"><span class="cap-prefix">Cap 10 -</span> Case Studies: De Informacion Suelta a Territorio Claro</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 2 - Reglas</h2>
+  <ul class="chapter-list">
+    <li><a href="cap11.html"><span class="cap-prefix">Cap 11 -</span> Tu Cerebro y la IA Cuando Entiendes Mecanismos</a></li>
+<li><a href="cap12.html"><span class="cap-prefix">Cap 12 -</span> La Evidencia Detras de las Reglas</a></li>
+<li><a class="active" aria-current="page" href="cap13.html"><span class="cap-prefix">Cap 13 -</span> Como Extraer las Reglas de un Tema</a></li>
+<li><a href="cap14.html"><span class="cap-prefix">Cap 14 -</span> Case Studies: De Memorizar Datos a Razonar</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 3 - Excepciones</h2>
+  <ul class="chapter-list">
+    <li><a href="cap15.html"><span class="cap-prefix">Cap 15 -</span> Tu Cerebro y la IA Cuando la Evidencia Cambia</a></li>
+<li><a href="cap16.html"><span class="cap-prefix">Cap 16 -</span> La Evidencia Detras del Pensamiento Critico</a></li>
+<li><a href="cap17.html"><span class="cap-prefix">Cap 17 -</span> Como Recalibrar Priors con Evidencia</a></li>
+<li><a href="cap18.html"><span class="cap-prefix">Cap 18 -</span> Case Studies: Cuando la Regla Falla</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 4 - Sistemas</h2>
+  <ul class="chapter-list">
+    <li><a href="cap19.html"><span class="cap-prefix">Cap 19 -</span> Tu Cerebro y la IA Viendo Sistemas</a></li>
+<li><a href="cap20.html"><span class="cap-prefix">Cap 20 -</span> La Evidencia Detras de los Sistemas</a></li>
+<li><a href="cap21.html"><span class="cap-prefix">Cap 21 -</span> Como Conectar un Tema con Otros Sistemas</a></li>
+<li><a href="cap22.html"><span class="cap-prefix">Cap 22 -</span> Case Studies: De Entender Partes a Ver Interacciones</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 5 - Creacion</h2>
+  <ul class="chapter-list">
+    <li><a href="cap23.html"><span class="cap-prefix">Cap 23 -</span> Tu Cerebro y la IA Cuando Creas</a></li>
+<li><a href="cap24.html"><span class="cap-prefix">Cap 24 -</span> La Evidencia Detras de la Creacion</a></li>
+<li><a href="cap25.html"><span class="cap-prefix">Cap 25 -</span> Como Convertir Aprendizaje en Produccion</a></li>
+<li><a href="cap26.html"><span class="cap-prefix">Cap 26 -</span> Case Studies: De Aprender Contenido a Crear Conocimiento</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">¿Y luego de esto?</h2>
+  <ul class="chapter-list">
+    <li><a href="cap27.html"><span class="cap-prefix">Cap 27 -</span> No Siempre Debemos Llegar al Nivel 5</a></li>
+<li><a href="cap28.html"><span class="cap-prefix">Cap 28 -</span> Una Lista Rapida de Aplicacion</a></li>
+<li><a href="cap29.html"><span class="cap-prefix">Cap 29 -</span> Limitaciones del Modelo y el Futuro del Aprendizaje</a></li>
+  </ul>
+</section>
+
+    </aside>
+    <main class="main">
+      <div class="content">
+        <div class="mobile-jump">
+  <label for="chapter-select">Capitulos</label>
+  <select id="chapter-select" data-chapter-select>
+    <option value="cap01.html">Cap 1 - La Ilusion de Aprendizaje</option>
+<option value="cap02.html">Cap 2 - La Maquina Que Aprende</option>
+<option value="cap03.html">Cap 3 - Tu Cerebro y la IA Cuando Algo Importa</option>
+<option value="cap04.html">Cap 4 - La Evidencia Detras del Uso</option>
+<option value="cap05.html">Cap 5 - Como Encontrar el Uso de Cualquier Tema</option>
+<option value="cap06.html">Cap 6 - Case Studies: Cuando el Tema Por Fin Importa</option>
+<option value="cap07.html">Cap 7 - Tu Cerebro y la IA Frente al Caos</option>
+<option value="cap08.html">Cap 8 - La Evidencia Detras del Mapa</option>
+<option value="cap09.html">Cap 9 - Como Mapear Cualquier Tema</option>
+<option value="cap10.html">Cap 10 - Case Studies: De Informacion Suelta a Territorio Claro</option>
+<option value="cap11.html">Cap 11 - Tu Cerebro y la IA Cuando Entiendes Mecanismos</option>
+<option value="cap12.html">Cap 12 - La Evidencia Detras de las Reglas</option>
+<option value="cap13.html" selected>Cap 13 - Como Extraer las Reglas de un Tema</option>
+<option value="cap14.html">Cap 14 - Case Studies: De Memorizar Datos a Razonar</option>
+<option value="cap15.html">Cap 15 - Tu Cerebro y la IA Cuando la Evidencia Cambia</option>
+<option value="cap16.html">Cap 16 - La Evidencia Detras del Pensamiento Critico</option>
+<option value="cap17.html">Cap 17 - Como Recalibrar Priors con Evidencia</option>
+<option value="cap18.html">Cap 18 - Case Studies: Cuando la Regla Falla</option>
+<option value="cap19.html">Cap 19 - Tu Cerebro y la IA Viendo Sistemas</option>
+<option value="cap20.html">Cap 20 - La Evidencia Detras de los Sistemas</option>
+<option value="cap21.html">Cap 21 - Como Conectar un Tema con Otros Sistemas</option>
+<option value="cap22.html">Cap 22 - Case Studies: De Entender Partes a Ver Interacciones</option>
+<option value="cap23.html">Cap 23 - Tu Cerebro y la IA Cuando Creas</option>
+<option value="cap24.html">Cap 24 - La Evidencia Detras de la Creacion</option>
+<option value="cap25.html">Cap 25 - Como Convertir Aprendizaje en Produccion</option>
+<option value="cap26.html">Cap 26 - Case Studies: De Aprender Contenido a Crear Conocimiento</option>
+<option value="cap27.html">Cap 27 - No Siempre Debemos Llegar al Nivel 5</option>
+<option value="cap28.html">Cap 28 - Una Lista Rapida de Aplicacion</option>
+<option value="cap29.html">Cap 29 - Limitaciones del Modelo y el Futuro del Aprendizaje</option>
+  </select>
+</div>
+
+        <article>
+  <header class="chapter-header" id="inicio">
+    <div class="chapter-kicker">
+      <span>Nivel 2 - Reglas</span>
+      <span>Cap 13</span>
+    </div>
+    <h1>Cap 13 - Como Extraer las Reglas de un Tema</h1>
+    <div class="chapter-meta">1325 palabras de cuerpo · 24 referencias codificadas</div>
+  </header>
+  <blockquote class="pullquote">No sabes una regla hasta que puedes usarla cuando el enunciado no la anuncia.</blockquote>
+<p>Este capitulo es taller.</p>
+<p>Ya tienes un Mapa de Dominio. Ahora vamos a extraer reglas.</p>
+<p>No todas las relaciones del mapa merecen convertirse en regla. Algunas son definiciones. Otras son categorias. Otras son datos. Una regla aparece cuando una relacion permite predecir, explicar, decidir o detectar un error. [E-C13-01]</p>
+<p>[[ANECDOTA_JAVIER: escena real donde convertir un mapa en regla operativa cambio una clase, decision, lectura de paper o uso de IA.]]</p>
+<h2 id="paso-1-elige-una-relacion-viva">Paso 1: elige una relacion viva</h2>
+<p>No empieces con todo el mapa.</p>
+<p>Elige una relacion:</p>
+<pre><code>Concepto A se relaciona con Concepto B porque...
+Si A cambia, B deberia...
+Cuando A aparece sin B, debo sospechar...</code></pre>
+<p>Si no puedes completar ninguna frase, todavia estas en Nivel 1. Vuelve al mapa.</p>
+<p>El objetivo es encontrar relaciones que se mueven. En medicina puede ser mecanismo -&gt; clinica. En investigacion, diseño -&gt; sesgo. En IA, tarea -&gt; riesgo. En docencia, actividad -&gt; evidencia de aprendizaje.</p>
+<p>Una señal de buena relacion es que permite una pregunta. Si solo puedes decir &quot;esto pertenece a esto&quot;, probablemente aun estas clasificando. Si puedes decir &quot;si esto cambia, entonces espero que aquello cambie&quot;, ya estas acercandote a una regla.</p>
+<p>No fuerces reglas donde no hay movimiento. Algunas piezas del mapa solo sirven para ubicar. Otras sirven para actuar. Nivel 2 trata de separar esas dos cosas.</p>
+<h2 id="paso-2-escribe-la-regla-completa">Paso 2: escribe la regla completa</h2>
+<p>Usa esta forma:</p>
+<pre><code>Si [condicion],
+entonces [prediccion o movimiento],
+porque [mecanismo],
+salvo que [limite/excepcion].</code></pre>
+<p>Ejemplo generico:</p>
+<pre><code>Si una tarea requiere precision factual alta,
+entonces no basta con output fluido de IA,
+porque la fluidez no verifica verdad,
+salvo que haya recuperacion externa, fuentes y auditoria humana.</code></pre>
+<p>Eso ya es una regla usable. Tiene condicion, movimiento, mecanismo y limite. [E-C13-02]</p>
+<h2 id="paso-3-agrega-caso-tipico-y-caso-limite">Paso 3: agrega caso tipico y caso limite</h2>
+<p>Una regla sin casos se queda en aire.</p>
+<p>Completa:</p>
+<pre><code>Caso tipico:
+Caso limite:
+Caso que rompe la regla:</code></pre>
+<p>El caso tipico entrena reconocimiento. El caso limite entrena juicio. El caso que rompe la regla te prepara para el siguiente nivel de la Escalera: Excepciones.</p>
+<p>No te saltes esta parte. Es donde la regla deja de sonar inteligente y empieza a volverse resistente.</p>
+<p>Este paso evita el autoengaño de la frase elegante. Una regla puede sonar preciosa en abstracto y desarmarse cuando le pides un caso limite. Eso no significa que la regla no sirva. Significa que todavia no conoces sus bordes. Los bordes son parte de la regla.</p>
+<h2 id="paso-4-convierte-la-regla-en-pregunta-de-retrieval">Paso 4: convierte la regla en pregunta de retrieval</h2>
+<p>Ahora haz que el cerebro trabaje.</p>
+<p>No preguntes:</p>
+<pre><code>Que es esta regla?</code></pre>
+<p>Pregunta:</p>
+<pre><code>En este caso, que regla aplica?
+Que dato la debilita?
+Que dato la rompe?
+Que explicacion mecanistica falta?
+Que error cometeria un principiante?</code></pre>
+<p>La pregunta correcta obliga a recuperar y discriminar. La pregunta floja solo obliga a reconocer. [E-C13-03]</p>
+<h2 id="paso-5-usa-ia-como-entrenador">Paso 5: usa IA como entrenador</h2>
+<p>Prompt base:</p>
+<pre><code>Actua como entrenador de razonamiento.
+
+Tema:
+Mi mapa:
+Regla que quiero entrenar:
+
+No me expliques primero.
+Genera un caso breve.
+Espera mi respuesta.
+Luego evalua:
+1. si identifique la regla correcta
+2. si explique el mecanismo
+3. si detecte limites
+4. si ignore un dato critico
+5. que deberia probar despues</code></pre>
+<p>El punto es que la IA espere. Esa palabra es clave. Si no espera, enseña antes de diagnosticar. Y si enseña antes de diagnosticar, no sabe que parte de tu modelo necesita feedback.</p>
+<h2 id="paso-6-intercala-reglas">Paso 6: intercala reglas</h2>
+<p>No entrenes una regla veinte veces seguidas con casos casi identicos.</p>
+<p>Eso puede darte fluidez local, pero no necesariamente discriminacion. Mezcla reglas vecinas:</p>
+<pre><code>Regla A:
+Regla B:
+Regla C:
+
+Genera 9 casos mezclados.
+No me digas que regla aplica.
+Espera mi respuesta.
+Luego corrige mi discriminacion.</code></pre>
+<p>El interleaving duele un poco mas porque te obliga a decidir. Esa molestia es parte del entrenamiento. Cuando todo viene bloqueado por tema, el enunciado te regala el contexto. Cuando viene mezclado, tienes que reconocer estructura.</p>
+<h2 id="paso-7-pide-feedback-de-proceso">Paso 7: pide feedback de proceso</h2>
+<p>No preguntes solo:</p>
+<pre><code>Acerté?</code></pre>
+<p>Pregunta:</p>
+<pre><code>Que dato use bien?
+Que dato ignore?
+Que inferencia fue demasiado rapida?
+Que mecanismo explique mal?
+Que regla alternativa debi considerar?</code></pre>
+<p>El feedback de resultado corrige una respuesta. El feedback de proceso corrige la mente que produjo la respuesta. Para Nivel 2, esa diferencia es enorme.</p>
+<h2 id="paso-8-audita-la-regla">Paso 8: audita la regla</h2>
+<p>Toda regla debe pasar por auditoria:</p>
+<pre><code>Fuente:
+Nivel de evidencia:
+Condicion de aplicacion:
+Mecanismo:
+Prediccion:
+Excepcion inicial:
+Error comun:
+Que dato me haria actualizar:</code></pre>
+<p>Me voy a tomar la libertad de decir esto: una regla sin fuente y sin limite es una opinion con uniforme. Puede ser util como hipotesis de trabajo, pero no debe viajar como conocimiento sólido.</p>
+<p>La humildad epistemica no debilita la regla. La hace usable.</p>
+<h2 id="ejemplo-completo">Ejemplo completo</h2>
+<pre><code>Concepto: IA para feedback educativo.
+
+Regla:
+Si uso IA para dar feedback,
+entonces debo anclarlo a una rubrica y a una produccion visible del estudiante,
+porque el feedback generico puede sonar util sin cambiar el modelo del aprendiz,
+salvo que el objetivo sea solo apoyo emocional o lluvia de ideas inicial.
+
+Caso tipico:
+Un estudiante entrega una respuesta y la IA ayuda a detectar huecos contra una
+rubrica.
+
+Caso limite:
+La IA da feedback correcto, pero el estudiante no entiende que cambiar.
+
+Caso que rompe:
+La IA inventa un criterio o evalua una fuente que no vio.</code></pre>
+<p>La regla mejora cuando deja de ser &quot;usar IA para feedback&quot; y se vuelve condicion, mecanismo, riesgo y limite.</p>
+<h2 id="tabla-de-reglas-v1">Tabla de Reglas v1</h2>
+<p>Tu output:</p>
+<pre><code>Concepto:
+Regla:
+Mecanismo:
+Condicion:
+Prediccion:
+Caso tipico:
+Caso limite:
+Caso que la rompe:
+Pregunta de retrieval:
+Error comun:
+Fuente:
+Feedback recibido:
+Correccion:</code></pre>
+<p>Haz tres reglas. No veinte.</p>
+<p>Tres buenas reglas valen mas que una lista larga de frases muertas. Si puedes recuperarlas, aplicarlas, romperlas y corregirlas, ya estas pensando distinto.</p>
+<p>Y si no puedes hacerlo aun, perfecto: ya encontraste el proximo bloque de entrenamiento. Esa es la gracia de un output verificable. No te dice si eres inteligente. Te dice que practicar despues.</p>
+<h2 id="criterio-de-salida">Criterio de salida</h2>
+<p>Pasas de Nivel 2 cuando puedes decir:</p>
+<pre><code>Esta regla aplica cuando...
+No aplica cuando...
+El mecanismo es...
+El error comun es...
+El feedback que necesito es...</code></pre>
+<p>Entonces ya estas listo para el siguiente escalon: cuando la regla falla.</p>
+<p>La regla no termina el aprendizaje. Lo vuelve discutible, entrenable y mejorable. Eso ya es un salto brutal frente a memorizar datos esperando que el caso real sea amable contigo.</p>
+<h2 id="microciclo-de-siete-minutos">Microciclo de siete minutos</h2>
+<p>Cuando no tengas mucho tiempo, hazlo asi:</p>
+<pre><code>1 minuto: escribe una regla.
+2 minutos: crea un caso tipico.
+2 minutos: crea un caso limite.
+1 minuto: responde sin mirar.
+1 minuto: pide feedback de mecanismo.</code></pre>
+<p>No es la practica completa. Es una unidad minima. Pero es mejor que releer diez minutos para sentirte tranquilo. La tranquilidad no siempre es aprendizaje. A veces es solo familiaridad con buena iluminacion. Y la familiaridad, ya lo sabes, sabe mentir con elegancia cuando nadie la prueba. La practica, en cambio, deja marcas mas honestas: una duda concreta, una regla que necesita limite, una excepcion que antes no veias, una pregunta mejor. Ese tipo de incomodidad no siempre se siente productiva. Pero suele estar mas cerca del aprendizaje real que la comodidad de subrayar otra vez.</p>
+<h2 id="evidence-codes">Evidence Codes</h2>
+<table>
+<tr>
+<th>Code</th>
+<th>Claim</th>
+<th>Evidence source</th>
+</tr>
+<tr>
+<td>E-C13-01</td>
+<td>Una regla util permite predecir, explicar, decidir o detectar error, no solo nombrar relaciones.</td>
+<td>EB-REGLAS refs 1-5, 15-21, 31-32</td>
+</tr>
+<tr>
+<td>E-C13-02</td>
+<td>Reglas completas deben declarar condicion, mecanismo, prediccion, limite y modo de fallo.</td>
+<td>EB-REGLAS refs 1-5, 13-16, 29-32</td>
+</tr>
+<tr>
+<td>E-C13-03</td>
+<td>Preguntas de retrieval, casos variables y feedback entrenan reglas mejor que relectura pasiva.</td>
+<td>EB-REGLAS refs 8-10, 19-22, 26-28</td>
+</tr>
+<tr>
+<td>E-C13-04</td>
+<td>IA como entrenador debe esperar respuesta, auditar proceso y retirar andamiaje progresivamente.</td>
+<td>EB-REGLAS refs 11, 23-26, 35-36; EB-AURA refs 3-6, 15-16</td>
+</tr>
+</table>
+<h2 id="referencias-codificadas">Referencias Codificadas</h2>
+<p class="footnote" id="fn-1"><a class="footnote-marker" href="#ref-1">[^1]</a>: Charlin, B., Boshuizen, H. P. A., Custers, E. J. F. M., &amp; Feltovich, P. J. (2007). Scripts and clinical reasoning. <em>Medical Education</em>, 41(12), 1178-1184. <a href="https://doi.org/10.1111/j.1365-2923.2007.02924.x" target="_blank" rel="noopener">https://doi.org/10.1111/j.1365-2923.2007.02924.x</a></p>
+<p class="footnote" id="fn-2"><a class="footnote-marker" href="#ref-2">[^2]</a>: Schmidt, H. G., &amp; Rikers, R. M. J. P. (2007). How expertise develops in medicine: knowledge encapsulation and illness script formation. <em>Medical Education</em>, 41(12), 1133-1139.</p>
+<p class="footnote" id="fn-3"><a class="footnote-marker" href="#ref-3">[^3]</a>: Custers, E. J. F. M. (2015). Thirty years of illness scripts: Theoretical origins and practical applications. <em>Medical Teacher</em>, 37(5), 457-462.</p>
+<p class="footnote" id="fn-4"><a class="footnote-marker" href="#ref-4">[^4]</a>: Norman, G. R., &amp; Eva, K. W. (2010). Diagnostic error and clinical reasoning. <em>Medical Education</em>, 44, 94-100. <a href="https://doi.org/10.1111/j.1365-2923.2009.03507.x" target="_blank" rel="noopener">https://doi.org/10.1111/j.1365-2923.2009.03507.x</a></p>
+<p class="footnote" id="fn-5"><a class="footnote-marker" href="#ref-5">[^5]</a>: Ericsson, K. A., Krampe, R. T., &amp; Tesch-Romer, C. (1993). The role of deliberate practice in the acquisition of expert performance. <em>Psychological Review</em>, 100(3), 363-406. <a href="https://doi.org/10.1037/0033-295X.100.3.363" target="_blank" rel="noopener">https://doi.org/10.1037/0033-295X.100.3.363</a></p>
+<p class="footnote" id="fn-6"><a class="footnote-marker" href="#ref-6">[^6]</a>: Ericsson, K. A. (2004). Deliberate practice and the acquisition and maintenance of expert performance in medicine and related domains. <em>Academic Medicine</em>, 79(10 Suppl), S70-S81.</p>
+<p class="footnote" id="fn-7"><a class="footnote-marker" href="#ref-7">[^7]</a>: Trumble, E., et al. (2024). Systematic review of distributed practice and retrieval practice in health professions education. <em>Advances in Health Sciences Education</em>, 29. <a href="https://doi.org/10.1007/s10459-023-10313-7" target="_blank" rel="noopener">https://doi.org/10.1007/s10459-023-10313-7</a></p>
+<p class="footnote" id="fn-8"><a class="footnote-marker" href="#ref-8">[^8]</a>: Thompson, C. P., &amp; Hughes, M. A. (2023). The effectiveness of spaced learning, interleaving, and retrieval practice in radiology education. <em>Journal of the American College of Radiology</em>, 20(11), 1092-1101. <a href="https://doi.org/10.1016/j.jacr.2023.08.028" target="_blank" rel="noopener">https://doi.org/10.1016/j.jacr.2023.08.028</a></p>
+<p class="footnote" id="fn-9"><a class="footnote-marker" href="#ref-9">[^9]</a>: Karpicke, J. D., &amp; Blunt, J. R. (2011). Retrieval practice produces more learning than elaborative studying with concept mapping. <em>Science</em>, 331, 772-775. <a href="https://doi.org/10.1126/science.1199327" target="_blank" rel="noopener">https://doi.org/10.1126/science.1199327</a></p>
+<p class="footnote" id="fn-10"><a class="footnote-marker" href="#ref-10">[^10]</a>: Green, M. L., Moeller, J. J., &amp; Spak, J. M. (2018). Test-enhanced learning in health professions education: A systematic review. <em>Medical Teacher</em>, 40, 337-350. <a href="https://doi.org/10.1080/0142159X.2018.1430354" target="_blank" rel="noopener">https://doi.org/10.1080/0142159X.2018.1430354</a></p>
+<p class="footnote" id="fn-11"><a class="footnote-marker" href="#ref-11">[^11]</a>: Rohrer, D., Taylor, K., Pashler, H., Wixted, J., &amp; Wiseheart, M. (2006). The effect of overlearning and distributed practise on the retention of mathematics knowledge. <em>Applied Cognitive Psychology</em>, 20, 1209-1224.</p>
+<p class="footnote" id="fn-12"><a class="footnote-marker" href="#ref-12">[^12]</a>: Sweller, J., van Merrienboer, J. J. G., &amp; Paas, F. (1998). Cognitive architecture and instructional design. <em>Educational Psychology Review</em>, 10, 251-296.</p>
+<p class="footnote" id="fn-13"><a class="footnote-marker" href="#ref-13">[^13]</a>: Kalyuga, S. (2007). Expertise reversal effect and its implications for learner-tailored instruction. <em>Educational Psychology Review</em>, 19, 509-539.</p>
+<p class="footnote" id="fn-14"><a class="footnote-marker" href="#ref-14">[^14]</a>: Young, J. Q., Van Merrienboer, J., Durning, S., &amp; Ten Cate, O. (2014). Cognitive Load Theory: implications for medical education. AMEE Guide No. 86. <em>Medical Teacher</em>, 36(5), 371-384.</p>
+<p class="footnote" id="fn-15"><a class="footnote-marker" href="#ref-15">[^15]</a>: Collins, A., Brown, J. S., &amp; Newman, S. E. (1989). Cognitive apprenticeship: Teaching the crafts of reading, writing, and mathematics. In <em>Knowing, Learning, and Instruction</em>.</p>
+<p class="footnote" id="fn-16"><a class="footnote-marker" href="#ref-16">[^16]</a>: Thistlethwaite, J. E., et al. (2012). The effectiveness of case-based learning in health professional education. BEME Guide No. 23. <em>Medical Teacher</em>, 34, e421-e444.</p>
+<p class="footnote" id="fn-17"><a class="footnote-marker" href="#ref-17">[^17]</a>: Weidenbusch, M., et al. (2019). Can clinical case discussions foster clinical reasoning skills in undergraduate medical education? A randomised controlled trial. <em>BMJ Open</em>, 9, e025973.</p>
+<p class="footnote" id="fn-18"><a class="footnote-marker" href="#ref-18">[^18]</a>: Kahneman, D. (2011). <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux.</p>
+<p class="footnote" id="fn-19"><a class="footnote-marker" href="#ref-19">[^19]</a>: Croskerry, P. (2009). A universal model of diagnostic reasoning. <em>Academic Medicine</em>, 84(8), 1022-1028.</p>
+<p class="footnote" id="fn-20"><a class="footnote-marker" href="#ref-20">[^20]</a>: Russ, R. M., et al. (2008). Molecular mechanistic reasoning: An educational strategy to bridge the gap between the molecular and cellular level. <em>Research in Science Education</em>.</p>
+<p class="footnote" id="fn-21"><a class="footnote-marker" href="#ref-21">[^21]</a>: Shtechman, Y., et al. (2024). Mechanistic reasoning in biology among elementary school children. <em>Journal of the Learning Sciences</em>. <a href="https://doi.org/10.1080/10508406.2024.2432682" target="_blank" rel="noopener">https://doi.org/10.1080/10508406.2024.2432682</a></p>
+<p class="footnote" id="fn-22"><a class="footnote-marker" href="#ref-22">[^22]</a>: Larsen, D. P., Butler, A. C., &amp; Roediger, H. L. (2008). Test-enhanced learning in medical education. <em>Medical Education</em>, 42(10), 959-966.</p>
+<p class="footnote" id="fn-23"><a class="footnote-marker" href="#ref-23">[^23]</a>: Larsen, D. P., Butler, A. C., &amp; Roediger, H. L. (2009). Repeated testing versus repeated study. <em>Medical Education</em>, 43(12), 1174-1181.</p>
+<p class="footnote" id="fn-24"><a class="footnote-marker" href="#ref-24">[^24]</a>: Stark, R., Kopp, V., &amp; Fischer, M. R. (2011). Case-based learning with worked examples in complex domains. <em>Learning and Instruction</em>, 21(1), 22-33.</p>
+  <nav class="pager" aria-label="Navegacion entre capitulos">
+    <a href="cap12.html"><span>Anterior</span><strong>Cap 12 - La Evidencia Detras de las Reglas</strong></a>
+    <a class="next" href="cap14.html"><span>Siguiente</span><strong>Cap 14 - Case Studies: De Memorizar Datos a Razonar</strong></a>
+  </nav>
+</article>
+
+      </div>
+    </main>
+    <aside class="toc-panel" aria-label="Secciones">
+      <h2 class="side-heading">En este capitulo</h2>
+      <ul class="toc-list"><li><a href="#paso-1-elige-una-relacion-viva">Paso 1: elige una relacion viva</a></li>
+<li><a href="#paso-2-escribe-la-regla-completa">Paso 2: escribe la regla completa</a></li>
+<li><a href="#paso-3-agrega-caso-tipico-y-caso-limite">Paso 3: agrega caso tipico y caso limite</a></li>
+<li><a href="#paso-4-convierte-la-regla-en-pregunta-de-retrieval">Paso 4: convierte la regla en pregunta de retrieval</a></li>
+<li><a href="#paso-5-usa-ia-como-entrenador">Paso 5: usa IA como entrenador</a></li>
+<li><a href="#paso-6-intercala-reglas">Paso 6: intercala reglas</a></li>
+<li><a href="#paso-7-pide-feedback-de-proceso">Paso 7: pide feedback de proceso</a></li>
+<li><a href="#paso-8-audita-la-regla">Paso 8: audita la regla</a></li>
+<li><a href="#ejemplo-completo">Ejemplo completo</a></li>
+<li><a href="#tabla-de-reglas-v1">Tabla de Reglas v1</a></li>
+<li><a href="#criterio-de-salida">Criterio de salida</a></li>
+<li><a href="#microciclo-de-siete-minutos">Microciclo de siete minutos</a></li>
+<li><a href="#evidence-codes">Evidence Codes</a></li>
+<li><a href="#referencias-codificadas">Referencias Codificadas</a></li></ul>
+    </aside>
+  </div>
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,6 +1,8 @@
-# El Aprendiz Experto - Mapa de 5 niveles
+# El Aprendiz Experto
 
-Mapa visual interactivo de la escalera del aprendiz experto:
+Manuscrito HTML navegable de **El Aprendiz Experto**.
+
+Incluye 29 capitulos:
 
 - Nivel 0: Uso como ignicion.
 - Nivel 1: Mapa.
@@ -8,6 +10,7 @@ Mapa visual interactivo de la escalera del aprendiz experto:
 - Nivel 3: Pensamiento critico.
 - Nivel 4: Sistemas.
 - Nivel 5: Creacion como contribucion situada.
+- Seccion final: `¿Y luego de esto?`
 
 Integra creatividad, tecnicas de estudio y neurociencia como una arquitectura
 general para aprender con IA sin delegar el pensamiento.
@@ -21,3 +24,4 @@ https://jaflomd.github.io/aprendiz-experto-mapa-5-niveles/
 ## Archivo principal
 
 - `index.html`
+- `cap01.html` a `cap29.html`

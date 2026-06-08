@@ -3,1265 +3,215 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>El Aprendiz Experto - Mapa de 5 niveles</title>
-  <style>
-    :root {
-      --ink: #16201f;
-      --ink-soft: #31403e;
-      --muted: #657370;
-      --line: #d7dfdc;
-      --paper: #f7f9f8;
-      --surface: #ffffff;
-      --teal: #0f8f83;
-      --blue: #3568d4;
-      --amber: #c9821b;
-      --coral: #d95f4f;
-      --violet: #6f5ab8;
-      --green: #2f855a;
-      --shadow: 0 18px 50px rgba(22, 32, 31, 0.08);
-      --radius: 8px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      overflow-x: hidden;
-      background:
-        linear-gradient(90deg, rgba(22, 32, 31, 0.035) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(22, 32, 31, 0.035) 1px, transparent 1px),
-        var(--paper);
-      background-size: 44px 44px;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-    }
-
-    .wrap {
-      width: min(1180px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(22, 32, 31, 0.1);
-      background: rgba(247, 249, 248, 0.92);
-      backdrop-filter: blur(16px);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      min-height: 68px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .mark {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--ink);
-      display: grid;
-      place-items: center;
-      background: var(--surface);
-      flex: 0 0 auto;
-    }
-
-    .mark svg {
-      width: 23px;
-      height: 23px;
-    }
-
-    .brand strong {
-      display: block;
-      font-size: 0.95rem;
-      line-height: 1.1;
-    }
-
-    .brand span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.25;
-    }
-
-    .nav {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding: 6px 0;
-    }
-
-    .nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav a {
-      text-decoration: none;
-      border: 1px solid rgba(22, 32, 31, 0.15);
-      background: var(--surface);
-      color: var(--ink-soft);
-      padding: 8px 11px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-    }
-
-    .nav a:hover {
-      border-color: var(--ink);
-      color: var(--ink);
-    }
-
-    .hero {
-      padding: 58px 0 28px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
-      gap: 30px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--teal);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.76rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 4rem;
-      line-height: 0.96;
-      letter-spacing: 0;
-      max-width: 720px;
-      overflow-wrap: break-word;
-    }
-
-    .lead {
-      margin: 22px 0 0;
-      max-width: 660px;
-      color: var(--ink-soft);
-      font-size: 1.08rem;
-      line-height: 1.65;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 42px;
-      padding: 0 15px;
-      border-radius: 999px;
-      border: 1px solid var(--ink);
-      background: var(--ink);
-      color: white;
-      text-decoration: none;
-      font-weight: 750;
-      font-size: 0.9rem;
-    }
-
-    .button.secondary {
-      background: var(--surface);
-      color: var(--ink);
-    }
-
-    .button svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-
-    .hero-panel {
-      background: var(--surface);
-      border: 1px solid rgba(22, 32, 31, 0.12);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      min-height: 500px;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .map-visual {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      display: block;
-    }
-
-    .legend-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .legend-item {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 10px;
-      min-height: 76px;
-      background: #fbfcfc;
-    }
-
-    .legend-item b {
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 4px;
-    }
-
-    .legend-item span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.76rem;
-      line-height: 1.35;
-    }
-
-    .section {
-      padding: 54px 0;
-      border-top: 1px solid rgba(22, 32, 31, 0.08);
-    }
-
-    .section-title {
-      display: grid;
-      grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.42fr);
-      gap: 30px;
-      align-items: end;
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 2.1rem;
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.95rem;
-    }
-
-    .system-strip {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .system-cell {
-      min-height: 138px;
-      border: 1px solid var(--line);
-      border-top: 5px solid var(--accent);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 14px;
-      box-shadow: 0 10px 22px rgba(22, 32, 31, 0.045);
-    }
-
-    .system-cell small {
-      display: block;
-      color: var(--muted);
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 7px;
-    }
-
-    .system-cell b {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.96rem;
-    }
-
-    .system-cell p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.82rem;
-      line-height: 1.45;
-    }
-
-    .ignition {
-      display: grid;
-      grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
-      gap: 20px;
-      align-items: stretch;
-      margin-top: 24px;
-    }
-
-    .ignition-box {
-      border: 1px solid var(--ink);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 22px;
-      min-height: 220px;
-    }
-
-    .ignition-box .label {
-      color: var(--teal);
-      font-weight: 850;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .ignition-box h3 {
-      margin: 12px 0 10px;
-      font-size: 1.5rem;
-      line-height: 1.1;
-    }
-
-    .ignition-box p {
-      margin: 0;
-      color: var(--ink-soft);
-      line-height: 1.55;
-    }
-
-    .ignition-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .mini {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 16px;
-      min-height: 220px;
-    }
-
-    .mini b {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-    }
-
-    .mini p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.5;
-      font-size: 0.88rem;
-    }
-
-    .level-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(180px, 1fr));
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .level-card {
-      position: relative;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 12px;
-      min-height: 420px;
-      padding: 18px;
-      border: 1px solid rgba(22, 32, 31, 0.13);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: 0 12px 28px rgba(22, 32, 31, 0.05);
-      overflow: hidden;
-    }
-
-    .level-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 6px;
-      background: var(--accent);
-    }
-
-    .level-num {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .level-num span:last-child {
-      width: 28px;
-      height: 28px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      color: white;
-      background: var(--accent);
-      letter-spacing: 0;
-      font-size: 0.82rem;
-    }
-
-    .level-card h3 {
-      margin: 0;
-      font-size: 1.35rem;
-      line-height: 1.08;
-    }
-
-    .level-card .thesis {
-      margin: 0;
-      color: var(--ink-soft);
-      font-size: 0.92rem;
-      line-height: 1.48;
-    }
-
-    .facet {
-      display: grid;
-      gap: 8px;
-      align-self: start;
-    }
-
-    .facet-row {
-      border-left: 3px solid var(--accent);
-      padding-left: 10px;
-    }
-
-    .facet-row b {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 3px;
-    }
-
-    .facet-row span {
-      display: block;
-      font-size: 0.86rem;
-      line-height: 1.42;
-      color: var(--ink-soft);
-    }
-
-    .output-pill {
-      align-self: end;
-      display: inline-flex;
-      width: fit-content;
-      min-height: 34px;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid color-mix(in srgb, var(--accent) 55%, white);
-      background: color-mix(in srgb, var(--accent) 10%, white);
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    .matrix {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 22px;
-      align-items: start;
-      margin-top: 26px;
-    }
-
-    .study-board {
-      display: grid;
-      gap: 10px;
-    }
-
-    .study-row {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 12px;
-      align-items: start;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 13px;
-    }
-
-    .study-row b {
-      color: var(--ink);
-      font-size: 0.9rem;
-    }
-
-    .study-row span {
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.45;
-    }
-
-    .creative-loop {
-      border: 1px solid var(--ink);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .creative-loop h3 {
-      margin: 0 0 12px;
-      font-size: 1.35rem;
-    }
-
-    .loop-steps {
-      display: grid;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .loop-step {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 12px;
-      align-items: start;
-    }
-
-    .loop-step i {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 0.8rem;
-    }
-
-    .loop-step b {
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .loop-step span {
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 0.88rem;
-    }
-
-    .interactive {
-      display: grid;
-      grid-template-columns: 250px minmax(0, 1fr);
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .level-tabs {
-      display: grid;
-      gap: 8px;
-    }
-
-    .tab-button {
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 10px;
-      width: 100%;
-      padding: 0 12px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      color: var(--ink);
-      cursor: pointer;
-      text-align: left;
-      font: inherit;
-      font-weight: 800;
-    }
-
-    .tab-button .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex: 0 0 auto;
-    }
-
-    .tab-button[aria-selected="true"] {
-      border-color: var(--ink);
-      box-shadow: 0 8px 20px rgba(22, 32, 31, 0.08);
-    }
-
-    .detail-panel {
-      border: 1px solid rgba(22, 32, 31, 0.14);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 22px;
-      min-height: 352px;
-      box-shadow: var(--shadow);
-    }
-
-    .detail-kicker {
-      margin: 0 0 10px;
-      color: var(--active);
-      font-weight: 850;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.76rem;
-    }
-
-    .detail-panel h3 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.05;
-    }
-
-    .detail-panel .detail-thesis {
-      color: var(--ink-soft);
-      line-height: 1.6;
-      margin: 14px 0 18px;
-      max-width: 760px;
-    }
-
-    .detail-columns {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .detail-block {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 14px;
-      background: #fbfcfc;
-      min-height: 136px;
-    }
-
-    .detail-block b {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .detail-block p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 0.88rem;
-    }
-
-    .footer-band {
-      border-top: 1px solid rgba(22, 32, 31, 0.12);
-      padding: 34px 0 44px;
-      background: var(--ink);
-      color: white;
-    }
-
-    .footer-band .wrap {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .footer-band h2 {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-    }
-
-    .footer-band p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.72);
-      max-width: 760px;
-      line-height: 1.55;
-    }
-
-    .footer-chip {
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: 999px;
-      padding: 10px 14px;
-      white-space: nowrap;
-      font-weight: 850;
-    }
-
-    @media (max-width: 1080px) {
-      h1 {
-        font-size: 3.1rem;
-      }
-
-      .hero-grid,
-      .section-title,
-      .matrix,
-      .interactive {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        min-height: auto;
-      }
-
-      .system-strip,
-      .level-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .ignition {
-        grid-template-columns: 1fr;
-      }
-
-      .ignition-list,
-      .detail-columns {
-        grid-template-columns: 1fr;
-      }
-
-      .level-card {
-        min-height: 330px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        width: min(100% - 24px, 1180px);
-      }
-
-      .topbar-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-        padding: 10px 0;
-      }
-
-      .nav {
-        width: 100%;
-      }
-
-      .hero {
-        padding-top: 38px;
-      }
-
-      .hero-grid {
-        justify-items: start;
-      }
-
-      h1 {
-        font-size: 2rem;
-        line-height: 1.08;
-        width: 100%;
-        max-width: 350px;
-      }
-
-      h2 {
-        font-size: 1.55rem;
-      }
-
-      .hero .lead,
-      .hero-actions,
-      .hero-panel {
-        width: 100%;
-        max-width: 350px;
-      }
-
-      .system-strip,
-      .level-grid,
-      .legend-row,
-      .study-row,
-      .footer-band .wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        padding: 12px;
-      }
-
-      .map-visual {
-        width: 100%;
-        margin-left: 0;
-      }
-
-      .level-tabs {
-        grid-template-columns: 1fr;
-      }
-
-      .button {
-        width: 100%;
-      }
-    }
-  </style>
+  <title>El Aprendiz Experto - Indice</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="page">
-    <header class="topbar">
-      <div class="wrap topbar-inner">
-        <div class="brand">
-          <div class="mark" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none">
-              <path d="M14 42c6-15 16-22 30-22" stroke="#16201f" stroke-width="5" stroke-linecap="round"/>
-              <path d="M18 48h28" stroke="#0f8f83" stroke-width="5" stroke-linecap="round"/>
-              <path d="M30 34h18" stroke="#3568d4" stroke-width="5" stroke-linecap="round"/>
-              <path d="M42 20h8" stroke="#d95f4f" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <strong>El Aprendiz Experto</strong>
-            <span>Mapa neurocognitivo de los 5 niveles</span>
-          </div>
-        </div>
-        <nav class="nav" aria-label="Secciones">
-          <a href="#motor">Motor</a>
-          <a href="#niveles">Niveles</a>
-          <a href="#tecnicas">Tecnicas</a>
-          <a href="#explorar">Explorar</a>
-        </nav>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AE</span>
+      <span class="brand-text">
+        <strong>El Aprendiz Experto</strong>
+        <span>Manuscrito HTML</span>
+      </span>
+    </a>
+    <div class="current-title">Indice del manuscrito</div>
+  </header>
+  <div class="progress-track"><div class="progress-bar"></div></div>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Capitulos">
+      <h2 class="side-heading">Indice</h2>
+      <section class="nav-section">
+  <h2 class="nav-section-title">Base</h2>
+  <ul class="chapter-list">
+    <li><a href="cap01.html"><span class="cap-prefix">Cap 1 -</span> La Ilusion de Aprendizaje</a></li>
+<li><a href="cap02.html"><span class="cap-prefix">Cap 2 -</span> La Maquina Que Aprende</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 0 - Uso</h2>
+  <ul class="chapter-list">
+    <li><a href="cap03.html"><span class="cap-prefix">Cap 3 -</span> Tu Cerebro y la IA Cuando Algo Importa</a></li>
+<li><a href="cap04.html"><span class="cap-prefix">Cap 4 -</span> La Evidencia Detras del Uso</a></li>
+<li><a href="cap05.html"><span class="cap-prefix">Cap 5 -</span> Como Encontrar el Uso de Cualquier Tema</a></li>
+<li><a href="cap06.html"><span class="cap-prefix">Cap 6 -</span> Case Studies: Cuando el Tema Por Fin Importa</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 1 - Mapa</h2>
+  <ul class="chapter-list">
+    <li><a href="cap07.html"><span class="cap-prefix">Cap 7 -</span> Tu Cerebro y la IA Frente al Caos</a></li>
+<li><a href="cap08.html"><span class="cap-prefix">Cap 8 -</span> La Evidencia Detras del Mapa</a></li>
+<li><a href="cap09.html"><span class="cap-prefix">Cap 9 -</span> Como Mapear Cualquier Tema</a></li>
+<li><a href="cap10.html"><span class="cap-prefix">Cap 10 -</span> Case Studies: De Informacion Suelta a Territorio Claro</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 2 - Reglas</h2>
+  <ul class="chapter-list">
+    <li><a href="cap11.html"><span class="cap-prefix">Cap 11 -</span> Tu Cerebro y la IA Cuando Entiendes Mecanismos</a></li>
+<li><a href="cap12.html"><span class="cap-prefix">Cap 12 -</span> La Evidencia Detras de las Reglas</a></li>
+<li><a href="cap13.html"><span class="cap-prefix">Cap 13 -</span> Como Extraer las Reglas de un Tema</a></li>
+<li><a href="cap14.html"><span class="cap-prefix">Cap 14 -</span> Case Studies: De Memorizar Datos a Razonar</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 3 - Excepciones</h2>
+  <ul class="chapter-list">
+    <li><a href="cap15.html"><span class="cap-prefix">Cap 15 -</span> Tu Cerebro y la IA Cuando la Evidencia Cambia</a></li>
+<li><a href="cap16.html"><span class="cap-prefix">Cap 16 -</span> La Evidencia Detras del Pensamiento Critico</a></li>
+<li><a href="cap17.html"><span class="cap-prefix">Cap 17 -</span> Como Recalibrar Priors con Evidencia</a></li>
+<li><a href="cap18.html"><span class="cap-prefix">Cap 18 -</span> Case Studies: Cuando la Regla Falla</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 4 - Sistemas</h2>
+  <ul class="chapter-list">
+    <li><a href="cap19.html"><span class="cap-prefix">Cap 19 -</span> Tu Cerebro y la IA Viendo Sistemas</a></li>
+<li><a href="cap20.html"><span class="cap-prefix">Cap 20 -</span> La Evidencia Detras de los Sistemas</a></li>
+<li><a href="cap21.html"><span class="cap-prefix">Cap 21 -</span> Como Conectar un Tema con Otros Sistemas</a></li>
+<li><a href="cap22.html"><span class="cap-prefix">Cap 22 -</span> Case Studies: De Entender Partes a Ver Interacciones</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">Nivel 5 - Creacion</h2>
+  <ul class="chapter-list">
+    <li><a href="cap23.html"><span class="cap-prefix">Cap 23 -</span> Tu Cerebro y la IA Cuando Creas</a></li>
+<li><a href="cap24.html"><span class="cap-prefix">Cap 24 -</span> La Evidencia Detras de la Creacion</a></li>
+<li><a href="cap25.html"><span class="cap-prefix">Cap 25 -</span> Como Convertir Aprendizaje en Produccion</a></li>
+<li><a href="cap26.html"><span class="cap-prefix">Cap 26 -</span> Case Studies: De Aprender Contenido a Crear Conocimiento</a></li>
+  </ul>
+</section>
+
+<section class="nav-section">
+  <h2 class="nav-section-title">¿Y luego de esto?</h2>
+  <ul class="chapter-list">
+    <li><a href="cap27.html"><span class="cap-prefix">Cap 27 -</span> No Siempre Debemos Llegar al Nivel 5</a></li>
+<li><a href="cap28.html"><span class="cap-prefix">Cap 28 -</span> Una Lista Rapida de Aplicacion</a></li>
+<li><a href="cap29.html"><span class="cap-prefix">Cap 29 -</span> Limitaciones del Modelo y el Futuro del Aprendizaje</a></li>
+  </ul>
+</section>
+
+    </aside>
+    <main class="main">
+      <div class="content">
+        <div class="mobile-jump">
+  <label for="chapter-select">Capitulos</label>
+  <select id="chapter-select" data-chapter-select>
+    <option value="cap01.html">Cap 1 - La Ilusion de Aprendizaje</option>
+<option value="cap02.html">Cap 2 - La Maquina Que Aprende</option>
+<option value="cap03.html">Cap 3 - Tu Cerebro y la IA Cuando Algo Importa</option>
+<option value="cap04.html">Cap 4 - La Evidencia Detras del Uso</option>
+<option value="cap05.html">Cap 5 - Como Encontrar el Uso de Cualquier Tema</option>
+<option value="cap06.html">Cap 6 - Case Studies: Cuando el Tema Por Fin Importa</option>
+<option value="cap07.html">Cap 7 - Tu Cerebro y la IA Frente al Caos</option>
+<option value="cap08.html">Cap 8 - La Evidencia Detras del Mapa</option>
+<option value="cap09.html">Cap 9 - Como Mapear Cualquier Tema</option>
+<option value="cap10.html">Cap 10 - Case Studies: De Informacion Suelta a Territorio Claro</option>
+<option value="cap11.html">Cap 11 - Tu Cerebro y la IA Cuando Entiendes Mecanismos</option>
+<option value="cap12.html">Cap 12 - La Evidencia Detras de las Reglas</option>
+<option value="cap13.html">Cap 13 - Como Extraer las Reglas de un Tema</option>
+<option value="cap14.html">Cap 14 - Case Studies: De Memorizar Datos a Razonar</option>
+<option value="cap15.html">Cap 15 - Tu Cerebro y la IA Cuando la Evidencia Cambia</option>
+<option value="cap16.html">Cap 16 - La Evidencia Detras del Pensamiento Critico</option>
+<option value="cap17.html">Cap 17 - Como Recalibrar Priors con Evidencia</option>
+<option value="cap18.html">Cap 18 - Case Studies: Cuando la Regla Falla</option>
+<option value="cap19.html">Cap 19 - Tu Cerebro y la IA Viendo Sistemas</option>
+<option value="cap20.html">Cap 20 - La Evidencia Detras de los Sistemas</option>
+<option value="cap21.html">Cap 21 - Como Conectar un Tema con Otros Sistemas</option>
+<option value="cap22.html">Cap 22 - Case Studies: De Entender Partes a Ver Interacciones</option>
+<option value="cap23.html">Cap 23 - Tu Cerebro y la IA Cuando Creas</option>
+<option value="cap24.html">Cap 24 - La Evidencia Detras de la Creacion</option>
+<option value="cap25.html">Cap 25 - Como Convertir Aprendizaje en Produccion</option>
+<option value="cap26.html">Cap 26 - Case Studies: De Aprender Contenido a Crear Conocimiento</option>
+<option value="cap27.html">Cap 27 - No Siempre Debemos Llegar al Nivel 5</option>
+<option value="cap28.html">Cap 28 - Una Lista Rapida de Aplicacion</option>
+<option value="cap29.html">Cap 29 - Limitaciones del Modelo y el Futuro del Aprendizaje</option>
+  </select>
+</div>
+
+        <section class="home-hero">
+  <p class="eyebrow">Manuscrito navegable</p>
+  <h1>El Aprendiz Experto</h1>
+  <p>Escalera neurocientifica de aprendizaje aumentado: uso, mapa, reglas, excepciones, sistemas y creacion. Version HTML generada desde los 29 capitulos Markdown.</p>
+</section>
+<section class="chapter-index">
+  <section class="index-section">
+  <h2>Base</h2>
+  <a href="cap01.html">Cap 1 - La Ilusion de Aprendizaje</a>
+<a href="cap02.html">Cap 2 - La Maquina Que Aprende</a>
+</section>
+
+<section class="index-section">
+  <h2>Nivel 0 - Uso</h2>
+  <a href="cap03.html">Cap 3 - Tu Cerebro y la IA Cuando Algo Importa</a>
+<a href="cap04.html">Cap 4 - La Evidencia Detras del Uso</a>
+<a href="cap05.html">Cap 5 - Como Encontrar el Uso de Cualquier Tema</a>
+<a href="cap06.html">Cap 6 - Case Studies: Cuando el Tema Por Fin Importa</a>
+</section>
+
+<section class="index-section">
+  <h2>Nivel 1 - Mapa</h2>
+  <a href="cap07.html">Cap 7 - Tu Cerebro y la IA Frente al Caos</a>
+<a href="cap08.html">Cap 8 - La Evidencia Detras del Mapa</a>
+<a href="cap09.html">Cap 9 - Como Mapear Cualquier Tema</a>
+<a href="cap10.html">Cap 10 - Case Studies: De Informacion Suelta a Territorio Claro</a>
+</section>
+
+<section class="index-section">
+  <h2>Nivel 2 - Reglas</h2>
+  <a href="cap11.html">Cap 11 - Tu Cerebro y la IA Cuando Entiendes Mecanismos</a>
+<a href="cap12.html">Cap 12 - La Evidencia Detras de las Reglas</a>
+<a href="cap13.html">Cap 13 - Como Extraer las Reglas de un Tema</a>
+<a href="cap14.html">Cap 14 - Case Studies: De Memorizar Datos a Razonar</a>
+</section>
+
+<section class="index-section">
+  <h2>Nivel 3 - Excepciones</h2>
+  <a href="cap15.html">Cap 15 - Tu Cerebro y la IA Cuando la Evidencia Cambia</a>
+<a href="cap16.html">Cap 16 - La Evidencia Detras del Pensamiento Critico</a>
+<a href="cap17.html">Cap 17 - Como Recalibrar Priors con Evidencia</a>
+<a href="cap18.html">Cap 18 - Case Studies: Cuando la Regla Falla</a>
+</section>
+
+<section class="index-section">
+  <h2>Nivel 4 - Sistemas</h2>
+  <a href="cap19.html">Cap 19 - Tu Cerebro y la IA Viendo Sistemas</a>
+<a href="cap20.html">Cap 20 - La Evidencia Detras de los Sistemas</a>
+<a href="cap21.html">Cap 21 - Como Conectar un Tema con Otros Sistemas</a>
+<a href="cap22.html">Cap 22 - Case Studies: De Entender Partes a Ver Interacciones</a>
+</section>
+
+<section class="index-section">
+  <h2>Nivel 5 - Creacion</h2>
+  <a href="cap23.html">Cap 23 - Tu Cerebro y la IA Cuando Creas</a>
+<a href="cap24.html">Cap 24 - La Evidencia Detras de la Creacion</a>
+<a href="cap25.html">Cap 25 - Como Convertir Aprendizaje en Produccion</a>
+<a href="cap26.html">Cap 26 - Case Studies: De Aprender Contenido a Crear Conocimiento</a>
+</section>
+
+<section class="index-section">
+  <h2>¿Y luego de esto?</h2>
+  <a href="cap27.html">Cap 27 - No Siempre Debemos Llegar al Nivel 5</a>
+<a href="cap28.html">Cap 28 - Una Lista Rapida de Aplicacion</a>
+<a href="cap29.html">Cap 29 - Limitaciones del Modelo y el Futuro del Aprendizaje</a>
+</section>
+
+</section>
+
       </div>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="wrap hero-grid">
-          <div>
-            <p class="eyebrow">Creatividad + estudio + neurociencia</p>
-            <h1>Aprender no es subir informacion. Es construir una mente que puede crear.</h1>
-            <p class="lead">La escalera organiza el aprendizaje como una progresion: primero enciendes relevancia, luego construyes mapa, reglas, juicio, sistemas y finalmente una contribucion. Cada nivel usa tecnicas de estudio distintas porque cada nivel le pide algo distinto al cerebro.</p>
-            <div class="hero-actions">
-              <a class="button" href="#niveles" aria-label="Ver los niveles">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Ver mapa
-              </a>
-              <a class="button secondary" href="#tecnicas" aria-label="Ver tecnicas">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                </svg>
-                Tecnicas
-              </a>
-            </div>
-          </div>
-
-          <div class="hero-panel" aria-label="Mapa visual de la escalera">
-            <svg class="map-visual" viewBox="0 0 720 720" role="img" aria-label="Diagrama de los cinco niveles de aprendizaje">
-              <rect x="0" y="0" width="720" height="720" fill="#ffffff"/>
-              <path d="M90 612 C170 548 178 465 240 426 C302 386 372 402 430 344 C488 286 492 200 608 120" fill="none" stroke="#16201f" stroke-width="8" stroke-linecap="round"/>
-              <path d="M106 592 C168 526 195 474 252 438" fill="none" stroke="#0f8f83" stroke-width="10" stroke-linecap="round"/>
-              <path d="M258 432 C304 401 354 400 408 358" fill="none" stroke="#3568d4" stroke-width="10" stroke-linecap="round"/>
-              <path d="M415 350 C461 310 486 268 504 220" fill="none" stroke="#c9821b" stroke-width="10" stroke-linecap="round"/>
-              <path d="M510 210 C530 165 560 136 610 116" fill="none" stroke="#d95f4f" stroke-width="10" stroke-linecap="round"/>
-
-              <g transform="translate(66 560)">
-                <rect width="166" height="86" rx="8" fill="#f7fffd" stroke="#0f8f83" stroke-width="2"/>
-                <text x="18" y="28" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#0f8f83">Nivel 1</text>
-                <text x="18" y="52" font-size="25" font-family="Inter, sans-serif" font-weight="900" fill="#16201f">Mapa</text>
-                <text x="18" y="72" font-size="13" font-family="Inter, sans-serif" fill="#657370">Lenguaje y coordenadas</text>
-              </g>
-
-              <g transform="translate(210 430)">
-                <rect width="166" height="86" rx="8" fill="#f8fbff" stroke="#3568d4" stroke-width="2"/>
-                <text x="18" y="28" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#3568d4">Nivel 2</text>
-                <text x="18" y="52" font-size="25" font-family="Inter, sans-serif" font-weight="900" fill="#16201f">Reglas</text>
-                <text x="18" y="72" font-size="13" font-family="Inter, sans-serif" fill="#657370">Movimientos de experto</text>
-              </g>
-
-              <g transform="translate(350 322)">
-                <rect width="186" height="86" rx="8" fill="#fffaf0" stroke="#c9821b" stroke-width="2"/>
-                <text x="18" y="28" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#c9821b">Nivel 3</text>
-                <text x="18" y="52" font-size="25" font-family="Inter, sans-serif" font-weight="900" fill="#16201f">Critico</text>
-                <text x="18" y="72" font-size="13" font-family="Inter, sans-serif" fill="#657370">Evidencia y priors</text>
-              </g>
-
-              <g transform="translate(450 190)">
-                <rect width="176" height="86" rx="8" fill="#fff8f7" stroke="#d95f4f" stroke-width="2"/>
-                <text x="18" y="28" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#d95f4f">Nivel 4</text>
-                <text x="18" y="52" font-size="25" font-family="Inter, sans-serif" font-weight="900" fill="#16201f">Sistemas</text>
-                <text x="18" y="72" font-size="13" font-family="Inter, sans-serif" fill="#657370">Conversacion del campo</text>
-              </g>
-
-              <g transform="translate(504 62)">
-                <rect width="166" height="86" rx="8" fill="#faf8ff" stroke="#6f5ab8" stroke-width="2"/>
-                <text x="18" y="28" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#6f5ab8">Nivel 5</text>
-                <text x="18" y="52" font-size="25" font-family="Inter, sans-serif" font-weight="900" fill="#16201f">Creacion</text>
-                <text x="18" y="72" font-size="13" font-family="Inter, sans-serif" fill="#657370">Contribucion situada</text>
-              </g>
-
-              <g transform="translate(50 78)">
-                <rect width="270" height="142" rx="8" fill="#16201f"/>
-                <text x="20" y="34" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#9ddbd4">Nivel 0: Uso</text>
-                <text x="20" y="68" font-size="28" font-family="Inter, sans-serif" font-weight="900" fill="#ffffff">La ignicion</text>
-                <text x="20" y="96" font-size="14" font-family="Inter, sans-serif" fill="#c8d4d1">Saliencia, valor, riesgo,</text>
-                <text x="20" y="118" font-size="14" font-family="Inter, sans-serif" fill="#c8d4d1">problema real. Sin esto,</text>
-                <text x="20" y="140" font-size="14" font-family="Inter, sans-serif" fill="#c8d4d1">el mapa no prende.</text>
-              </g>
-
-              <g opacity="0.9">
-                <circle cx="120" cy="318" r="11" fill="#0f8f83"/>
-                <circle cx="168" cy="288" r="8" fill="#3568d4"/>
-                <circle cx="216" cy="318" r="10" fill="#c9821b"/>
-                <circle cx="170" cy="366" r="8" fill="#d95f4f"/>
-                <path d="M120 318 168 288 216 318 170 366 120 318" fill="none" stroke="#b8c4c1" stroke-width="3"/>
-                <text x="82" y="408" font-size="14" font-family="Inter, sans-serif" font-weight="800" fill="#16201f">Motor neurocognitivo</text>
-                <text x="82" y="430" font-size="13" font-family="Inter, sans-serif" fill="#657370">saliencia -> control -> integracion</text>
-              </g>
-            </svg>
-
-            <div class="legend-row">
-              <div class="legend-item">
-                <b>Estudiar</b>
-                <span>Tecnicas que obligan al cerebro a recuperar, conectar y corregir.</span>
-              </div>
-              <div class="legend-item">
-                <b>Entender</b>
-                <span>Modelos, reglas, priors y sistemas que reducen ruido.</span>
-              </div>
-              <div class="legend-item">
-                <b>Crear</b>
-                <span>Una contribucion que cierra un hueco y vuelve al campo.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="motor">
-        <div class="wrap">
-          <div class="section-title">
-            <h2>El motor neurocognitivo debajo de la escalera</h2>
-            <p>Los niveles no son temas decorativos. Cada uno empuja un circuito distinto: valor, representacion, prediccion, control, integracion y produccion.</p>
-          </div>
-
-          <div class="system-strip">
-            <div class="system-cell" style="--accent: var(--teal)">
-              <small>Salience network</small>
-              <b>Esto importa</b>
-              <p>Activa relevancia, riesgo, recompensa y urgencia. Sin uso, la atencion no tiene brujula.</p>
-            </div>
-            <div class="system-cell" style="--accent: var(--blue)">
-              <small>Central executive</small>
-              <b>Sostener esfuerzo</b>
-              <p>Ordena pasos, inhibe distractores, compara opciones y mantiene memoria de trabajo.</p>
-            </div>
-            <div class="system-cell" style="--accent: var(--amber)">
-              <small>Prediction error</small>
-              <b>Actualizar</b>
-              <p>Aprendes cuando una expectativa importante choca con evidencia y feedback.</p>
-            </div>
-            <div class="system-cell" style="--accent: var(--coral)">
-              <small>Default mode</small>
-              <b>Integrar</b>
-              <p>Simula, conecta, imagina escenarios y convierte partes en historia o sistema.</p>
-            </div>
-            <div class="system-cell" style="--accent: var(--violet)">
-              <small>Agency loop</small>
-              <b>Crear</b>
-              <p>El mapa se vuelve accion externa: artefacto, prueba, revision y contribucion.</p>
-            </div>
-          </div>
-
-          <div class="ignition">
-            <div class="ignition-box">
-              <div class="label">Nivel 0 / Ignicion</div>
-              <h3>Uso: antes del mapa, necesitas motivo.</h3>
-              <p>La escalera de 5 niveles se enciende con Uso. El cerebro aprende mejor cuando el tema toca una decision, riesgo, oportunidad, identidad o futuro. Sin saliencia, las tecnicas se vuelven ritual.</p>
-            </div>
-            <div class="ignition-list">
-              <div class="mini">
-                <b>Pregunta de entrada</b>
-                <p>Que cambia en mi vida, trabajo, examen, paciente, clase o proyecto si aprendo esto?</p>
-              </div>
-              <div class="mini">
-                <b>Tecnica base</b>
-                <p>Brujula de uso: problema real, audiencia, decision, costo de ignorarlo y primer output.</p>
-              </div>
-              <div class="mini">
-                <b>Riesgo con IA</b>
-                <p>Pedir respuestas antes de apostar. Sin apuesta, no hay prediction error que duela ni actualice.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="niveles">
-        <div class="wrap">
-          <div class="section-title">
-            <h2>Los 5 niveles del aprendiz experto</h2>
-            <p>Cada nivel transforma una forma de estudiar en una forma de pensar. La creatividad aparece al final porque necesita mapa, reglas, juicio y conversacion.</p>
-          </div>
-
-          <div class="level-grid">
-            <article class="level-card" style="--accent: var(--teal)">
-              <div class="level-num"><span>Nivel</span><span>1</span></div>
-              <h3>Mapa</h3>
-              <p class="thesis">Ves las islas: lenguaje, categorias, taxonomias y representaciones del campo.</p>
-              <div class="facet">
-                <div class="facet-row"><b>Estudio</b><span>Concept maps, clasificacion, glosario, ejemplos contrastados.</span></div>
-                <div class="facet-row"><b>Neuro</b><span>Reduce carga cognitiva y crea coordenadas para recuperar informacion.</span></div>
-                <div class="facet-row"><b>Creatividad</b><span>Aun no crea. Prepara el espacio donde crear sera posible.</span></div>
-              </div>
-              <div class="output-pill">Output: mapa de dominio</div>
-            </article>
-
-            <article class="level-card" style="--accent: var(--blue)">
-              <div class="level-num"><span>Nivel</span><span>2</span></div>
-              <h3>Reglas</h3>
-              <p class="thesis">Aprendes a moverte: patrones, mecanismos, algoritmos, Bayes y contrafactuales.</p>
-              <div class="facet">
-                <div class="facet-row"><b>Estudio</b><span>Retrieval, self-explanation, problemas, feedback, casos trabajados.</span></div>
-                <div class="facet-row"><b>Neuro</b><span>El cerebro ensaya predicciones y ajusta modelos de accion.</span></div>
-                <div class="facet-row"><b>Creatividad</b><span>Gana tecnica. Todavia opera dentro de rutas conocidas.</span></div>
-              </div>
-              <div class="output-pill">Output: movimientos de experto</div>
-            </article>
-
-            <article class="level-card" style="--accent: var(--amber)">
-              <div class="level-num"><span>Nivel</span><span>3</span></div>
-              <h3>Critico</h3>
-              <p class="thesis">Relajas priors: evidencia, contraevidencia, fuentes, sesgos y condiciones de validez.</p>
-              <div class="facet">
-                <div class="facet-row"><b>Estudio</b><span>Interleaving, casos limite, appraisal, red team, matriz de priors.</span></div>
-                <div class="facet-row"><b>Neuro</b><span>Prediction error con precision: no todo dato merece el mismo peso.</span></div>
-                <div class="facet-row"><b>Creatividad</b><span>Evita dogmas. Aprende que una regla fuerte sigue siendo revisable.</span></div>
-              </div>
-              <div class="output-pill">Output: prior recalibrado</div>
-            </article>
-
-            <article class="level-card" style="--accent: var(--coral)">
-              <div class="level-num"><span>Nivel</span><span>4</span></div>
-              <h3>Sistemas</h3>
-              <p class="thesis">Entiendes la conversacion: genealogia, interacciones, campos vecinos y bucles.</p>
-              <div class="facet">
-                <div class="facet-row"><b>Estudio</b><span>Causal maps, analogias profundas, historia del campo, sistemas.</span></div>
-                <div class="facet-row"><b>Neuro</b><span>La integracion conecta piezas, simula consecuencias y detecta patrones.</span></div>
-                <div class="facet-row"><b>Creatividad</b><span>Antes de crear, sabes que conversacion vas a interrumpir.</span></div>
-              </div>
-              <div class="output-pill">Output: conversacion del campo</div>
-            </article>
-
-            <article class="level-card" style="--accent: var(--violet)">
-              <div class="level-num"><span>Nivel</span><span>5</span></div>
-              <h3>Creacion</h3>
-              <p class="thesis">Modificas el mapa: detectas un gap y produces una contribucion verificable.</p>
-              <div class="facet">
-                <div class="facet-row"><b>Estudio</b><span>Writing-to-learn, ensenar, proyectos, knowledge building, auditoria.</span></div>
-                <div class="facet-row"><b>Neuro</b><span>CEN + DMN + feedback: generar, probar, revisar y consolidar.</span></div>
-                <div class="facet-row"><b>Creatividad</b><span>No es output bonito. Es una respuesta nueva al campo.</span></div>
-              </div>
-              <div class="output-pill">Output: contribucion situada</div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="tecnicas">
-        <div class="wrap">
-          <div class="section-title">
-            <h2>Las tecnicas de estudio cambian de funcion por nivel</h2>
-            <p>La misma tecnica puede ser superficial o profunda segun donde cae en la escalera. El criterio es simple: que operacion mental fuerza?</p>
-          </div>
-
-          <div class="matrix">
-            <div class="study-board">
-              <div class="study-row">
-                <b>Retrieval practice</b>
-                <span>Nivel 2 y 3. Reconstruir sin mirar convierte una regla en prediccion vulnerable al error.</span>
-              </div>
-              <div class="study-row">
-                <b>Self-explanation</b>
-                <span>Nivel 2. Explicar el mecanismo obliga a mostrar huecos, no solo reconocer palabras.</span>
-              </div>
-              <div class="study-row">
-                <b>Interleaving</b>
-                <span>Nivel 3. Mezclar casos parecidos entrena discriminacion y relaja priors rigidos.</span>
-              </div>
-              <div class="study-row">
-                <b>Concept mapping</b>
-                <span>Nivel 1 y 4. Primero ordena islas; luego revela relaciones, bucles y conversaciones.</span>
-              </div>
-              <div class="study-row">
-                <b>Teaching / writing</b>
-                <span>Nivel 5. Convertir conocimiento en artefacto prueba si el mapa sirve para otra mente.</span>
-              </div>
-            </div>
-
-            <div class="creative-loop">
-              <h3>Creatividad como ciclo de dominio</h3>
-              <p class="lead" style="font-size:0.95rem; margin-top:0;">Crear no es el opuesto de estudiar. Es estudiar hasta que el conocimiento pueda salir de ti con forma, estandar y utilidad.</p>
-              <div class="loop-steps">
-                <div class="loop-step">
-                  <i>1</i>
-                  <div><b>Detecta el hueco</b><span>Que falta, falla, confunde, no se traduce o no existe en la conversacion?</span></div>
-                </div>
-                <div class="loop-step">
-                  <i>2</i>
-                  <div><b>Elige artefacto</b><span>Ensayo, clase, protocolo, visual, investigacion, herramienta, tutor o producto.</span></div>
-                </div>
-                <div class="loop-step">
-                  <i>3</i>
-                  <div><b>Declara estandar</b><span>Que tendria que cumplir para no ser solo contenido bonito?</span></div>
-                </div>
-                <div class="loop-step">
-                  <i>4</i>
-                  <div><b>Audita y prueba</b><span>Fuentes, claims, utilidad, casos limite, audiencia y revision posterior.</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="explorar">
-        <div class="wrap">
-          <div class="section-title">
-            <h2>Explora el nivel que estas entrenando</h2>
-            <p>Usa esto como tablero de diagnostico: si un tema no avanza, probablemente estas usando una tecnica de un nivel distinto al problema real.</p>
-          </div>
-
-          <div class="interactive">
-            <div class="level-tabs" role="tablist" aria-label="Selector de niveles">
-              <button class="tab-button" style="--accent: var(--teal)" role="tab" aria-selected="true" data-level="0"><span class="dot"></span>Mapa</button>
-              <button class="tab-button" style="--accent: var(--blue)" role="tab" aria-selected="false" data-level="1"><span class="dot"></span>Reglas</button>
-              <button class="tab-button" style="--accent: var(--amber)" role="tab" aria-selected="false" data-level="2"><span class="dot"></span>Critico</button>
-              <button class="tab-button" style="--accent: var(--coral)" role="tab" aria-selected="false" data-level="3"><span class="dot"></span>Sistemas</button>
-              <button class="tab-button" style="--accent: var(--violet)" role="tab" aria-selected="false" data-level="4"><span class="dot"></span>Creacion</button>
-            </div>
-
-            <div class="detail-panel" id="detail" style="--active: var(--teal)">
-              <p class="detail-kicker" id="detailKicker">Nivel 1</p>
-              <h3 id="detailTitle">Mapa</h3>
-              <p class="detail-thesis" id="detailThesis">Si no ves el territorio, estudiar se vuelve acumular frases. El mapa crea lenguaje, categorias y coordenadas.</p>
-              <div class="detail-columns">
-                <div class="detail-block">
-                  <b>Tecnica</b>
-                  <p id="detailTechnique">Concept map, glosario activo, taxonomias, ejemplos y contraejemplos simples.</p>
-                </div>
-                <div class="detail-block">
-                  <b>Neurociencia</b>
-                  <p id="detailNeuro">Reduce carga cognitiva y permite que la memoria conecte elementos nuevos con esquemas previos.</p>
-                </div>
-                <div class="detail-block">
-                  <b>Pregunta AURA</b>
-                  <p id="detailPrompt">Dame el mapa del dominio: conceptos, categorias, prerequisitos, relaciones y confusiones comunes.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
-
-    <footer class="footer-band">
-      <div class="wrap">
-        <div>
-          <h2>La escalera completa</h2>
-          <p>Uso enciende. Mapa orienta. Reglas mueven. Critico calibra. Sistemas conectan. Creacion devuelve algo al campo. La IA vale cuando protege ese ciclo, no cuando lo reemplaza.</p>
-        </div>
-        <div class="footer-chip">Dominio -> Contribucion</div>
-      </div>
-    </footer>
+    <aside class="toc-panel" aria-label="Secciones">
+      <h2 class="side-heading">En este capitulo</h2>
+      <p class="chapter-meta">29 capitulos · version navegable</p>
+    </aside>
   </div>
-
-  <script>
-    const levels = [
-      {
-        color: "#0f8f83",
-        kicker: "Nivel 1",
-        title: "Mapa",
-        thesis: "Si no ves el territorio, estudiar se vuelve acumular frases. El mapa crea lenguaje, categorias y coordenadas.",
-        technique: "Concept map, glosario activo, taxonomias, ejemplos y contraejemplos simples.",
-        neuro: "Reduce carga cognitiva y permite que la memoria conecte elementos nuevos con esquemas previos.",
-        prompt: "Dame el mapa del dominio: conceptos, categorias, prerequisitos, relaciones y confusiones comunes."
-      },
-      {
-        color: "#3568d4",
-        kicker: "Nivel 2",
-        title: "Reglas",
-        thesis: "El mapa muestra islas; las reglas ensenan a moverte entre ellas como lo haria una mente experta.",
-        technique: "Retrieval practice, problemas trabajados, self-explanation, prediccion antes de feedback.",
-        neuro: "Entrena modelos de accion: predices, fallas, recibes correccion y ajustas movimientos.",
-        prompt: "Extrae los movimientos de experto: patrones, mecanismos, algoritmos, predicciones y errores comunes."
-      },
-      {
-        color: "#c9821b",
-        kicker: "Nivel 3",
-        title: "Critico",
-        thesis: "Una regla buena no es dogma. Es un prior que debe cambiar de peso cuando aparece evidencia mejor.",
-        technique: "Interleaving, casos limite, red teaming, critical appraisal, matriz de recalibracion de priors.",
-        neuro: "La actualizacion depende de prediction error, precision, fuente y metacognicion.",
-        prompt: "No confirmes mi idea. Muestrame evidencia a favor, en contra y que dato deberia cambiar mi mente."
-      },
-      {
-        color: "#d95f4f",
-        kicker: "Nivel 4",
-        title: "Sistemas",
-        thesis: "La isla se vuelve consecuencia: historia, influencias, bucles, tensiones y conversaciones abiertas.",
-        technique: "Causal maps, analogias profundas, genealogia del concepto, transferencia entre campos.",
-        neuro: "La integracion permite simular escenarios, conectar escalas y entender efectos indirectos.",
-        prompt: "Reconstruye la conversacion que produjo este concepto: origen, influencias, vecinos, bucles y debates."
-      },
-      {
-        color: "#6f5ab8",
-        kicker: "Nivel 5",
-        title: "Creacion",
-        thesis: "Crear es detectar un hueco y responderle al campo con una contribucion que otros puedan usar o criticar.",
-        technique: "Writing-to-learn, learning by teaching, proyectos, gap analysis, auditoria y prueba con audiencia.",
-        neuro: "Generar, evaluar y revisar coordina control ejecutivo, simulacion, memoria, feedback y agencia.",
-        prompt: "Antes de crear, ayudame a detectar el gap, definir estandar, audiencia, evidencia y prueba minima."
-      }
-    ];
-
-    const buttons = Array.from(document.querySelectorAll(".tab-button"));
-    const detail = document.getElementById("detail");
-    const detailKicker = document.getElementById("detailKicker");
-    const detailTitle = document.getElementById("detailTitle");
-    const detailThesis = document.getElementById("detailThesis");
-    const detailTechnique = document.getElementById("detailTechnique");
-    const detailNeuro = document.getElementById("detailNeuro");
-    const detailPrompt = document.getElementById("detailPrompt");
-
-    function setLevel(index) {
-      const level = levels[index];
-      buttons.forEach((button, i) => {
-        button.setAttribute("aria-selected", i === index ? "true" : "false");
-      });
-      detail.style.setProperty("--active", level.color);
-      detailKicker.textContent = level.kicker;
-      detailTitle.textContent = level.title;
-      detailThesis.textContent = level.thesis;
-      detailTechnique.textContent = level.technique;
-      detailNeuro.textContent = level.neuro;
-      detailPrompt.textContent = level.prompt;
-    }
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => setLevel(Number(button.dataset.level)));
-    });
-  </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
