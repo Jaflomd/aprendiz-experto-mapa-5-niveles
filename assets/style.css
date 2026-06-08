@@ -556,8 +556,8 @@ tr:last-child td {
 
 .cover-feature {
   display: grid;
-  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: minmax(140px, 210px) minmax(0, 1fr);
+  gap: 24px;
   align-items: center;
   padding: 22px 0 34px;
   border-bottom: 1px solid var(--line);
@@ -625,7 +625,7 @@ tr:last-child td {
 }
 
 .cover-page-frame {
-  width: min(100%, 560px);
+  width: min(100%, 420px);
   margin: 0 auto;
 }
 
@@ -716,6 +716,6 @@ tr:last-child td {
   }
 
   .cover-thumb {
-    max-width: 280px;
+    max-width: 220px;
   }
 }
