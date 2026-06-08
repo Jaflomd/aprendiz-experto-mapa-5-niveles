@@ -548,6 +548,113 @@ tr:last-child td {
   color: var(--accent-strong);
 }
 
+.cover-feature,
+.cover-page,
+.credits-page {
+  font-family: var(--font-ui);
+}
+
+.cover-feature {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding: 22px 0 34px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+
+.cover-thumb,
+.cover-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.cover-feature h1,
+.cover-page h1,
+.credits-page h1 {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.cover-feature p,
+.cover-page p,
+.credits-page p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.cover-actions,
+.front-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cover-actions a,
+.front-actions a {
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 10px 13px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cover-actions a:first-child,
+.front-actions a:first-child {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.cover-page {
+  display: grid;
+  gap: 24px;
+}
+
+.cover-page-frame {
+  width: min(100%, 560px);
+  margin: 0 auto;
+}
+
+.credits-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.credits-card {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.credits-card h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  color: var(--accent-strong);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.credits-card p {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1180px) {
   .layout {
     grid-template-columns: 270px minmax(0, 1fr);
@@ -602,5 +709,13 @@ tr:last-child td {
 
   .pager .next {
     text-align: left;
+  }
+
+  .cover-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-thumb {
+    max-width: 280px;
   }
 }
