@@ -143,94 +143,85 @@
       <span>Cap 14</span>
     </div>
     <h1>Cap 14 - Case Studies: De Memorizar Datos a Razonar</h1>
-    <div class="chapter-meta">1338 palabras de cuerpo · 24 referencias codificadas</div>
+    <div class="chapter-meta">1523 palabras de cuerpo · 24 referencias codificadas</div>
   </header>
   <blockquote class="pullquote">El tema empieza a moverse cuando una regla puede fallar.</blockquote>
 <p>Este capitulo cierra Nivel 2.</p>
-<p>No trae pruebas del metodo. Trae patrones para entrenar el ojo. Son escenas reales/sanitizadas o plantillas de trabajo que necesitan aprobacion final de Javier si van a publicarse como anecdotas. Si una escena no es real o no es eticamente publicable, se borra. Punto.</p>
+<p>No trae pruebas del metodo. Trae una escena para entrenar el ojo. Es una escena real/sanitizada que necesita aprobacion final de Javier si va a publicarse como anecdota. Si una escena no es real o no es eticamente publicable, se borra. Punto.</p>
 <p>El patron:</p>
 <pre><code>Dato memorizado -&gt; Regla -&gt; Mecanismo -&gt; Caso limite -&gt; Feedback</code></pre>
-<p>Lee cada caso buscando esa transformacion. La escena no importa por ser interesante. Importa si te permite mirar un dato muerto y convertirlo en una prediccion entrenable.</p>
-<h2 id="1-ia-de-output-fluido-a-regla-de-verificacion">1. IA: de output fluido a regla de verificacion</h2>
-<p><strong>Patron real/sanitizado:</strong> evaluar una herramienta IA sin enamorarse del output.</p>
+<p>Lee este caso buscando esa transformacion. La escena no importa por ser interesante. Importa si te permite mirar un dato muerto y convertirlo en una prediccion entrenable.</p>
+<h2 id="la-escena-dos-maestros-que-pensaban-desde-las-bases">La escena: dos maestros que pensaban desde las bases</h2>
+<p>En medicina me paso con dos maestros clinicos. Los voy a dejar anonimos porque la escena no necesita nombres; necesita el movimiento.</p>
+<p>Ellos explicaban la enfermedad de una manera distinta. No era que recitaran mas. No era que tuvieran una lista mas larga. Era como si hubieran visto la microbiologia, la fisiopatologia y la biologia molecular por debajo de la presentacion clinica. Donde yo veia datos, ellos veian movimiento. Donde yo veia sintomas, ellos preguntaban que mecanismo los hacia aparecer. Donde yo queria recordar, ellos razonaban.</p>
+<p>Al inicio no sabia como se llamaba eso. Despues la literatura me dio lenguaje: guiones de enfermedad, conocimiento encapsulado, razonamiento mecanistico. Pero la primera experiencia no fue teorica. Fue casi corporal: &quot;ah, esta persona no esta memorizando una tabla; esta navegando una estructura&quot;. [E-C14-01]</p>
 <p>Dato memorizado:</p>
-<pre><code>La IA puede equivocarse.</code></pre>
-<p>Eso lo sabe todo el mundo y casi nadie lo usa bien.</p>
+<pre><code>Esta enfermedad tiene estos sintomas.</code></pre>
 <p>Regla:</p>
-<pre><code>Si una tarea tiene alto costo de error,
-entonces el output fluido no basta,
-porque la fluidez no verifica verdad,
-salvo que haya fuentes, estandar y auditoria humana.</code></pre>
-<p>Caso limite: una respuesta de IA muy bien escrita, con tono seguro y estructura limpia, pero basada en una fuente desactualizada.</p>
-<p>Feedback: no preguntes &quot;suena bien?&quot;. Pregunta:</p>
-<pre><code>Que afirmacion necesita fuente?
-Que decision depende de esto?
-Que error seria costoso?
-Que verificacion minima exige?</code></pre>
-<p>Aqui la regla convierte entusiasmo tecnologico en criterio. [E-C14-01]</p>
-<p>Lectura de Regla: el movimiento experto no es &quot;desconfiar siempre de IA&quot;. Eso seria flojo. El movimiento experto es condicional: cuanto mayor el costo de error, mayor la necesidad de verificacion. La regla no te vuelve anti-IA. Te vuelve responsable.</p>
-<h2 id="2-clinica-de-lista-de-efectos-a-mecanismo">2. Clinica: de lista de efectos a mecanismo</h2>
-<p><strong>Escena docente/sanitizada:</strong> farmacologia como mecanismo, no como tabla muerta.</p>
-<p>Dato memorizado:</p>
-<pre><code>Este farmaco puede causar X efecto adverso.</code></pre>
-<p>Regla:</p>
-<pre><code>Receptor -&gt; circuito -&gt; efecto -&gt; riesgo -&gt; excepcion.</code></pre>
-<p>El estudiante que solo memoriza la lista se rompe cuando aparece un caso raro. El que entiende el mecanismo puede anticipar. No siempre acertara, claro. Pero su error tendra forma. Y un error con forma puede recibir feedback.</p>
-<p>Caso limite: el efecto esperado no aparece porque hay una condicion que modifica el circuito.</p>
-<p>Feedback:</p>
-<pre><code>Que receptor estas invocando?
-Que paso fisiologico falta?
-Que dato contradice tu regla?</code></pre>
-<p>Esto no reemplaza fuentes ni guias. Organiza la lectura para que la evidencia tenga donde entrar. [E-C14-02]</p>
-<p>Lectura de Regla: la lista ayuda al inicio, pero el mecanismo da transferencia. Cuando aparece un caso que no calza perfecto, el aprendiz mecanistico tiene una ruta de pensamiento. Puede equivocarse, si. Pero sabe donde pedir feedback.</p>
-<h2 id="3-aula-de-respuesta-correcta-a-razonamiento-visible">3. Aula: de respuesta correcta a razonamiento visible</h2>
-<p><strong>Patron real/sanitizado:</strong> diseñar una clase donde el estudiante no pueda esconderse detras del producto final.</p>
-<p>Dato memorizado:</p>
-<pre><code>Hay que evaluar proceso, no solo resultado.</code></pre>
-<p>Regla:</p>
-<pre><code>Si el output puede ser producido por IA,
-entonces la evaluacion debe incluir intencion, razonamiento propio y auditoria,
-porque el producto final ya no basta para inferir aprendizaje.</code></pre>
-<p>Caso limite: un estudiante entrega una respuesta excelente, pero no puede explicar que acepto, que rechazo ni que verifico.</p>
-<p>Feedback:</p>
-<pre><code>Muestrame tu primera respuesta.
-Muestrame que cambio la IA.
-Muestrame que decidiste no aceptar.
-Defiendelo sin la herramienta.</code></pre>
-<p>Aqui la regla no demoniza IA. Protege aprendizaje. [E-C14-03]</p>
-<p>Lectura de Regla: si el producto final ya no prueba dominio, la evaluacion debe moverse hacia proceso. Esta regla sirve para docentes, pero tambien para ti. Si tu output con IA se ve perfecto y tu razonamiento no puede defenderlo, no tienes dominio. Tienes presentacion.</p>
-<h2 id="4-investigacion-de-cita-a-actualizacion">4. Investigacion: de cita a actualizacion</h2>
-<p><strong>Patron real/sanitizado:</strong> leer papers para cambiar de opinion, no para ganar discusiones.</p>
-<p>Dato memorizado:</p>
-<pre><code>Hay que citar evidencia.</code></pre>
-<p>Regla:</p>
-<pre><code>Si una cita sostiene un claim,
-entonces debo saber poblacion, metodo, outcome y limite,
-porque una referencia sin contexto puede inflar certeza.</code></pre>
-<p>Caso limite: un paper clasico, muy citado, pero antiguo o no directamente aplicable a la pregunta actual.</p>
-<p>Feedback:</p>
-<pre><code>Que claim exacto sostiene?
-Que no sostiene?
-Que hallazgo me haria actualizar?
-Estoy usando evidencia o autoridad prestada?</code></pre>
-<p>Esta regla es incomoda. Tambien es liberadora. Te permite escribir con conviccion sin fingir omnisciencia. [E-C14-04]</p>
-<p>Lectura de Regla: no se trata de citar menos. Se trata de citar mejor. La cita deja de ser decoracion y se vuelve una pieza con alcance, limite y consecuencia. Eso cambia el tono completo de una idea.</p>
-<h2 id="5-seguridad-de-checklist-a-anticipacion-de-falla">5. Seguridad: de checklist a anticipacion de falla</h2>
-<p><strong>Patron real/sanitizado:</strong> usar una lista de seguridad sin convertirla en ritual vacio.</p>
-<p>Dato memorizado:</p>
-<pre><code>Hay que usar checklist.</code></pre>
-<p>Regla:</p>
-<pre><code>Si una tarea tiene pasos criticos y consecuencias serias,
-entonces el checklist debe proteger puntos de falla,
-porque la memoria humana se degrada bajo carga, prisa y confianza excesiva.</code></pre>
-<p>Caso limite: el equipo marca todos los items, pero nadie se detiene a pensar si el riesgo principal cambio.</p>
-<p>Feedback:</p>
-<pre><code>Que falla intentaba prevenir este item?
-Que cambio en el contexto?
-Que punto critico estamos tratando como rutina?</code></pre>
-<p>La regla convierte checklist en pensamiento preventivo, no en burocracia.</p>
+<pre><code>Base biologica -&gt; mecanismo -&gt; manifestacion -&gt; decision -&gt; excepcion.</code></pre>
+<p>Eso cambia todo.</p>
+<p>Si solo memorizas sintomas, cada caso que se mueve un poco te desordena. Si entiendes el mecanismo, puedes anticipar. No siempre vas a acertar. Genuinamente, esa fantasia tambien hay que soltarla. Pero tu error tendra forma. Y un error con forma puede recibir feedback. [E-C14-02]</p>
+<h2 id="la-diferencia-no-era-saber-mas">La diferencia no era saber mas</h2>
+<p>Me voy a tomar la libertad de decir esto: muchas veces llamamos &quot;inteligencia&quot; a lo que en realidad es arquitectura.</p>
+<p>Cuando un maestro explica una enfermedad desde sus bases, parece magia. Pero no es magia. Es una regla interna bien entrenada. Mira un dato y pregunta:</p>
+<pre><code>Que mecanismo lo produce?
+Que deberia aparecer si esto es cierto?
+Que dato lo contradice?
+Que excepcion me obliga a ajustar?</code></pre>
+<p>Eso es Nivel 2.</p>
+<p>La regla no es una frase bonita. Es una maquina pequena de prediccion. Te permite decir: si esta fisiopatologia esta activa, entonces espero estos hallazgos; si no aparecen, debo revisar mi supuesto; si aparece este dato rival, mi regla necesita limite. Ahi la memoria deja de ser bodega y se vuelve movimiento.</p>
+<p>Esto tambien me hizo mirar distinto mis propios anos de estudio. Yo habia descubierto la importancia de la fisiopatologia en los guiones de enfermedad, y luego algo parecido me paso con estadistica: cuando entiendes el mecanismo, la asociacion de conceptos se expande. Antes pensaba que saber pensar era tener mas contenido. Ahora creo otra cosa: saber pensar es poder mover el contenido con reglas que aceptan feedback.</p>
+<h2 id="la-regla-no-reemplaza-la-humildad">La regla no reemplaza la humildad</h2>
+<p>Aqui hay una trampa fina: cuando descubres mecanismos, puedes volverte insoportable.</p>
+<p>Empiezas a explicar todo desde una regla. Todo parece encajar. Todo parece deducible. Y eso tambien puede ser autoengano. La fisiopatologia ayuda, pero no reemplaza al paciente, la evidencia, la evolucion ni el contexto. La estadistica ayuda, pero no reemplaza el juicio sobre medicion, sesgo, poblacion o pregunta.</p>
+<p>Por eso una regla de Nivel 2 necesita dos barandas.</p>
+<p>La primera es prediccion:</p>
+<pre><code>Si esta regla es cierta, que deberia observar?</code></pre>
+<p>La segunda es vulnerabilidad:</p>
+<pre><code>Que dato me obligaria a corregirla?</code></pre>
+<p>Sin la primera, la regla es palabreria elegante. Sin la segunda, la regla se vuelve dogma. El maestro que yo admiraba no era valioso porque hablara con seguridad. Era valioso porque su seguridad tenia estructura. Podia decir por que esperaba algo, donde se apoyaba, que mecanismo estaba invocando y que dato haria revisar la ruta.</p>
+<p>Eso es lo que quiero rescatar para el lector: no memorices menos por rebeldia. Memoriza mejor. Usa la memoria como materia prima para reglas que puedan moverse. Aprende el dato, si. Pero preguntale que mecanismo supone y que caso lo pondria a prueba.</p>
+<h2 id="como-se-entrena-sin-volverse-solemne">Como se entrena sin volverse solemne</h2>
+<p>No necesitas convertir cada tema en tratado fisiopatologico. Esa seria otra forma de avoidance, pero con bata blanca.</p>
+<p>Toma una entidad, una regla y un caso. Uno. Luego haz tres movimientos:</p>
+<pre><code>Predigo:
+si este mecanismo esta activo, deberia ver...
+
+Busco limite:
+esto fallaria si...
+
+Pido feedback:
+el dato que necesito revisar es...</code></pre>
+<p>Diez minutos asi pueden valer mas que una hora copiando tablas. No porque la tabla sea mala, sino porque la tabla sin movimiento se queda quieta. El objetivo no es sonar brillante. Es entrenar una regla que pueda equivocarse de manera corregible.</p>
+<p>Ese detalle cambio mi forma de estudiar y de ensenar. Una buena pregunta no es solo &quot;cual es la respuesta?&quot;. Una buena pregunta es &quot;que deberia pasar si esta respuesta fuera cierta?&quot;. Esa segunda pregunta obliga al cerebro a moverse. Le pide prediccion, no reconocimiento. Le pide mecanismo, no decoracion. Y cuando fallas, el fallo trae informacion, no identidad.</p>
+<p>Por eso me gusta hacer que una regla hable en futuro. Si solo describe pasado, puede esconderse como teoria. Si predice futuro, se expone. Y cuando se expone, aprende.</p>
+<p>Ese es el pequeno salto de este nivel: la idea deja de estar guardada y empieza a arriesgar una prediccion. Si falla, no se esconde: pide correccion concreta y vuelve a entrenarse con menos orgullo.</p>
+<h2 id="el-output-verificable">El output verificable</h2>
+<p>El output de este caso es una tabla de razonamiento, no una lista de datos.</p>
+<pre><code>Entidad:
+
+Dato que suelo memorizar:
+
+Base:
+microbiologia / fisiologia / contexto / estructura causal relevante
+
+Mecanismo:
+que movimiento explica el dato
+
+Manifestacion:
+que deberia ver si el mecanismo esta activo
+
+Decision:
+que cambia en diagnostico, manejo, ensenanza o investigacion
+
+Excepcion:
+cuando esta regla falla o necesita matiz
+
+Feedback:
+que dato, caso o experto me permitiria corregir la regla</code></pre>
+<p>La parte dificil es escribir la excepcion. El aprendiz principiante quiere que la regla cierre el mundo. El aprendiz experto quiere que la regla trabaje sin volverse dogma. [E-C14-03] [E-C14-04]</p>
 <h2 id="el-patron-comun">El patron comun</h2>
-<p>En los cinco casos, la regla hace el mismo trabajo:</p>
+<p>En este caso, la regla hace el mismo trabajo:</p>
 <pre><code>Nombra condicion.
 Explica mecanismo.
 Predice movimiento.
@@ -276,23 +267,23 @@ Donde podria fallar?</code></pre>
 </tr>
 <tr>
 <td>E-C14-01</td>
-<td>En IA, reglas de verificacion preservan criterio cuando la fluidez puede esconder error.</td>
-<td>EB-AURA refs 3-6, 15-18, 20-26; EB-REGLAS refs 7-12</td>
+<td>Los guiones de enfermedad y el conocimiento encapsulado ayudan a organizar datos clinicos en estructuras de razonamiento.</td>
+<td>EB-REGLAS refs 1-4, 10-13</td>
 </tr>
 <tr>
 <td>E-C14-02</td>
-<td>Razonamiento mecanistico permite conectar datos con predicciones y feedback.</td>
-<td>EB-REGLAS refs 1-4, 15-16, 29-32</td>
+<td>Razonamiento mecanistico permite conectar datos con predicciones, excepciones y feedback.</td>
+<td>EB-REGLAS refs 1-4, 15-17, 29-32</td>
 </tr>
 <tr>
 <td>E-C14-03</td>
-<td>Evaluar proceso, intencion y auditoria protege aprendizaje cuando el output puede ser asistido por IA.</td>
-<td>EB-AURA refs 3-6, 15-16; EB-REGLAS refs 11, 25-28</td>
+<td>Retrieval, casos y feedback convierten reglas en movimientos entrenables, no solo declaracion teorica.</td>
+<td>EB-REGLAS refs 5-12, 18-20</td>
 </tr>
 <tr>
 <td>E-C14-04</td>
-<td>Citar evidencia exige claim, metodo, poblacion, outcome y limite para evitar autoridad decorativa.</td>
-<td>EB-REGLAS refs 12-14, 27-30</td>
+<td>Una regla util declara condicion, mecanismo, prediccion y limite para evitar certeza rigida.</td>
+<td>EB-REGLAS refs 11-16, 25-28</td>
 </tr>
 <tr>
 <td>E-C14-05</td>
@@ -335,11 +326,11 @@ Donde podria fallar?</code></pre>
     </main>
     <aside class="toc-panel" aria-label="Secciones">
       <h2 class="side-heading">En este capitulo</h2>
-      <ul class="toc-list"><li><a href="#1-ia-de-output-fluido-a-regla-de-verificacion">1. IA: de output fluido a regla de verificacion</a></li>
-<li><a href="#2-clinica-de-lista-de-efectos-a-mecanismo">2. Clinica: de lista de efectos a mecanismo</a></li>
-<li><a href="#3-aula-de-respuesta-correcta-a-razonamiento-visible">3. Aula: de respuesta correcta a razonamiento visible</a></li>
-<li><a href="#4-investigacion-de-cita-a-actualizacion">4. Investigacion: de cita a actualizacion</a></li>
-<li><a href="#5-seguridad-de-checklist-a-anticipacion-de-falla">5. Seguridad: de checklist a anticipacion de falla</a></li>
+      <ul class="toc-list"><li><a href="#la-escena-dos-maestros-que-pensaban-desde-las-bases">La escena: dos maestros que pensaban desde las bases</a></li>
+<li><a href="#la-diferencia-no-era-saber-mas">La diferencia no era saber mas</a></li>
+<li><a href="#la-regla-no-reemplaza-la-humildad">La regla no reemplaza la humildad</a></li>
+<li><a href="#como-se-entrena-sin-volverse-solemne">Como se entrena sin volverse solemne</a></li>
+<li><a href="#el-output-verificable">El output verificable</a></li>
 <li><a href="#el-patron-comun">El patron comun</a></li>
 <li><a href="#tu-propio-case-study">Tu propio case study</a></li>
 <li><a href="#cierre-de-nivel-2">Cierre de Nivel 2</a></li>

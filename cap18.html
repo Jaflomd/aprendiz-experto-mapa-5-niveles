@@ -143,95 +143,87 @@
       <span>Cap 18</span>
     </div>
     <h1>Cap 18 - Case Studies: Cuando la Regla Falla</h1>
-    <div class="chapter-meta">1337 palabras de cuerpo · 28 referencias codificadas</div>
+    <div class="chapter-meta">1652 palabras de cuerpo · 28 referencias codificadas</div>
   </header>
   <blockquote class="pullquote">La excepcion no viene a destruirte la regla. Viene a ensenarte donde termina.</blockquote>
 <p>Este capitulo cierra Nivel 3.</p>
-<p>Como en los case studies anteriores: no son prueba del metodo. Son patrones reales/sanitizados o escenas de trabajo que Javier debe aprobar antes de publicar. Si una escena no es real, no es publicable o no se puede sanitizar, se reemplaza por placeholder. Punto.</p>
+<p>Como en los case studies anteriores: no es prueba del metodo. Es una escena real/sanitizada de trabajo que Javier debe aprobar antes de publicar. Si una escena no es real, no es publicable o no se puede sanitizar, se reemplaza por placeholder. Punto. [E-C18-05]</p>
 <p>El movimiento del nivel:</p>
 <pre><code>Regla -&gt; Prior -&gt; Evidencia rival -&gt; Excepcion -&gt; Posterior provisional</code></pre>
-<p>Lee cada caso buscando eso: no quien tuvo razon, sino como cambia la fuerza de la regla cuando el contexto se vuelve incomodo.</p>
-<h2 id="1-ia-si-ahorra-tiempo-conviene">1. IA: &quot;si ahorra tiempo, conviene&quot;</h2>
-<p><strong>Patron real/sanitizado:</strong> una herramienta IA parece perfecta porque reduce friccion y produce output rapido.</p>
+<p>Lee este caso buscando eso: no quien tuvo razon, sino como cambia la fuerza de la regla cuando el contexto se vuelve incomodo.</p>
+<h2 id="la-escena-cuando-la-categoria-no-calza">La escena: cuando la categoria no calza</h2>
+<p>En psiquiatria me paso con el DSM y la CIE-10.</p>
+<p>Al inicio uno aprende categorias como si fueran cosas naturales. Depresion. Trastorno bipolar. Ansiedad. Psicosis. Personalidad. La categoria da alivio porque ordena. Te permite hablar con otros, registrar, investigar, decidir, ensenar. No estoy diciendo que no sirva. Seria una caricatura. Sirve muchisimo.</p>
+<p>Pero despues aparecen casos, trayectorias y conversaciones donde algo no calza. El diagnostico parece correcto en superficie, pero la evolucion no se comporta como esperabas. O todos discuten que categoria encaja, y de pronto aparece una pregunta mas inquietante:</p>
+<pre><code>Y si la categoria no es tan real como estoy tratandola?</code></pre>
+<p>Brutal.</p>
+<p>No porque destruya la clinica. Porque te obliga a bajar la voz. La categoria es util, pero no siempre es un objeto natural. Puede ser un acuerdo operativo, una herramienta, una familia de patrones, una entrada a conversacion, no la realidad completa. [E-C18-01]</p>
 <p>Regla inicial:</p>
-<pre><code>Si la IA ahorra tiempo, conviene usarla.</code></pre>
-<p>Prior: moderado a fuerte. Tiene sentido. Ahorrar tiempo importa.</p>
-<p>Excepcion: si el ahorro elimina el esfuerzo que producia aprendizaje, el tiempo ahorrado puede convertirse en deuda cognitiva.</p>
+<pre><code>Si el caso cumple criterios, entonces ya se que es.</code></pre>
+<p>Prior: fuerte. Tiene sentido. Los criterios ayudan a no improvisar.</p>
+<p>Excepcion: cuando el paciente, la trayectoria o el contexto muestran que la categoria explica algo, pero no explica suficiente.</p>
 <p>Evidencia rival:</p>
-<pre><code>El output mejora.
-La practica propia disminuye.
-La confianza sube.
-La capacidad de defender el razonamiento baja.</code></pre>
+<pre><code>Evolucion temporal que no calza.
+Datos que quedan fuera del diagnostico.
+Comorbilidades que cambian la lectura.
+Respuesta inesperada.
+Contexto biografico o social que modifica el significado del sintoma.</code></pre>
 <p>Posterior provisional:</p>
-<pre><code>Usa IA para reducir friccion mecanica,
-no para eliminar retrieval, prediction error, feedback ni autoria cognitiva.</code></pre>
-<p>Lectura de Nivel 3: la regla no se descarta. Se restringe. [E-C18-01]</p>
-<h2 id="2-clinica-si-reconozco-el-patron-ya-se-que-es">2. Clinica: &quot;si reconozco el patron, ya se que es&quot;</h2>
-<p><strong>Escena docente/sanitizada:</strong> un caso parece encajar con una categoria conocida.</p>
-<p>Regla inicial:</p>
-<pre><code>Si reconozco el patron, puedo avanzar.</code></pre>
-<p>Prior: fuerte, porque el reconocimiento de patrones tiene valor en expertise.</p>
-<p>Excepcion: cuando aparece un dato discordante que no es ruido sino senal.</p>
-<p>Evidencia rival:</p>
-<pre><code>Un signo no esperado.
-Una evolucion temporal distinta.
-Una tasa base que no calza.
-Una alternativa plausible que explica mas datos.</code></pre>
-<p>Pregunta de recalibracion:</p>
-<pre><code>Que diagnostico alternativo estoy ignorando porque mi primera explicacion se
-sintio demasiado comoda?</code></pre>
-<p>Posterior provisional:</p>
-<pre><code>Reconocer patrones ayuda, pero en casos complejos debo buscar el dato que rompe
-el cierre prematuro.</code></pre>
-<p>Lectura de Nivel 3: no se trata de desconfiar siempre del ojo clinico. Se trata de saber cuando pedirle una segunda vuelta. [E-C18-02]</p>
-<h2 id="3-investigacion-si-el-paper-es-clasico-pesa-mas">3. Investigacion: &quot;si el paper es clasico, pesa mas&quot;</h2>
-<p><strong>Patron real/sanitizado:</strong> una cita muy usada sostiene una idea que todos repiten.</p>
-<p>Regla inicial:</p>
-<pre><code>Si un paper es clasico y muy citado, probablemente es fuerte.</code></pre>
-<p>Prior: moderado. La reputacion puede indicar impacto, pero no garantiza aplicabilidad actual.</p>
-<p>Excepcion: el claim que quieres defender no es el mismo que el paper estudio, o la poblacion, metodo, outcome o contexto ya no sostienen esa extension.</p>
-<p>Evidencia rival:</p>
-<pre><code>Revision mas reciente.
-Outcome distinto.
-Poblacion no comparable.
-Limitacion metodologica importante.
-Contraevidencia acumulada.</code></pre>
-<p>Posterior provisional:</p>
-<pre><code>Una cita clasica merece respeto, no obediencia. Debo verificar que claim exacto
-sostiene hoy.</code></pre>
-<p>Lectura de Nivel 3: esto no es anti-academia. Es amor por la evidencia sin idolatria. [E-C18-03]</p>
-<h2 id="4-aula-si-el-producto-final-es-bueno-aprendio">4. Aula: &quot;si el producto final es bueno, aprendio&quot;</h2>
-<p><strong>Escena docente/sanitizada:</strong> un estudiante entrega una tarea impecable.</p>
-<p>Regla inicial:</p>
-<pre><code>Buen output = buen aprendizaje.</code></pre>
-<p>Prior: cada vez mas debil en era IA.</p>
-<p>Excepcion: el producto final puede estar bien escrito y aun asi ocultar ausencia de proceso propio.</p>
-<p>Evidencia rival:</p>
-<pre><code>No puede explicar decisiones.
-No sabe que acepto o rechazo de la IA.
-No puede resolver una variante.
-No puede defender el criterio sin herramienta.</code></pre>
-<p>Posterior provisional:</p>
-<pre><code>El output final importa, pero debe acompanarse de proceso visible, defensa y
-transferencia.</code></pre>
-<p>Lectura de Nivel 3: aqui la regla se vuelve mas exigente. No basta evaluar resultado; hay que evaluar autoria cognitiva. [E-C18-04]</p>
-<h2 id="5-incertidumbre-si-no-estoy-seguro-necesito-mas-datos">5. Incertidumbre: &quot;si no estoy seguro, necesito mas datos&quot;</h2>
-<p><strong>Patron real/sanitizado:</strong> la incertidumbre se siente peligrosa y la respuesta automatica es pedir mas informacion.</p>
-<p>Regla inicial:</p>
-<pre><code>Si no estoy seguro, debo buscar mas datos.</code></pre>
-<p>Prior: moderado. Buscar datos puede ser responsable.</p>
-<p>Excepcion: cuando pedir mas datos intenta calmar ansiedad, no mejorar decision.</p>
-<p>Evidencia rival:</p>
-<pre><code>El dato nuevo no cambiaria conducta.
-El costo del dato supera su utilidad.
-La pregunta clinica o academica sigue mal formulada.
-La incertidumbre necesita declaracion, no persecucion infinita.</code></pre>
-<p>Posterior provisional:</p>
-<pre><code>Busco mas datos cuando pueden cambiar una decision. Si no, debo tolerar
-incertidumbre y actuar con limites claros.</code></pre>
-<p>Lectura de Nivel 3: la madurez no es eliminar toda duda. Es decidir que duda merece busqueda y que duda debe acompanarte con humildad. [E-C18-05]</p>
+<pre><code>La categoria orienta, pero no agota la formulacion.</code></pre>
+<p>Ese posterior parece simple, pero cambia el tono completo. Ya no usas la categoria como trono. La usas como herramienta.</p>
+<p>Un trono exige lealtad. Una herramienta exige criterio.</p>
+<p>Cuando la categoria se vuelve trono, todo dato discordante parece amenaza. Lo forzamos a entrar, lo minimizamos o lo llamamos &quot;atipico&quot; demasiado rapido. Cuando la categoria se vuelve herramienta, el dato discordante puede trabajar. Puede decirnos que la formulacion esta incompleta, que hay otra trayectoria, que el contexto pesa mas, que el lenguaje compartido sirve pero no alcanza.</p>
+<p>Esto tambien protege del extremo contrario. Porque cuando uno descubre limites en las categorias, puede caer en otra fantasia: &quot;entonces nada existe, todo es construccion, todo da igual&quot;. No. Eso tampoco sirve. Es una salida elegante para no decidir.</p>
+<p>Nivel 3 no es nihilismo. Es recalibracion.</p>
+<pre><code>Creo esta categoria con esta fuerza,
+para estos usos,
+con estos limites,
+y estas evidencias podrian mover mi confianza.</code></pre>
+<p>Esa frase es menos teatral que &quot;todo es complejo&quot;, pero produce mejor practica. Te permite comunicarte con otros sin perder humildad. Te permite usar manuales sin convertirlos en identidad. Te permite sostener incertidumbre sin perseguir datos infinitos para calmar ansiedad.</p>
+<h2 id="la-pregunta-que-protege-el-criterio">La pregunta que protege el criterio</h2>
+<p>Cuando una categoria no calza, la salida no es hablar mas bonito. Es formular mejor.</p>
+<p>La pregunta que me ayuda es:</p>
+<pre><code>Que estoy dejando fuera para que mi explicacion siga pareciendo limpia?</code></pre>
+<p>Esa pregunta no acusa. No humilla. Solo abre espacio. Puede mostrar un dato temporal, un contexto, una comorbilidad, una historia de tratamiento, una tension social o simplemente una duda razonable. En terminos de aprendizaje, obliga a separar comodidad de evidencia.</p>
+<p>Tambien obliga a regularse. Porque la excepcion puede sentirse como amenaza personal: &quot;si esto no calza, entonces yo no se&quot;. Pero la respuesta mas madura es otra: &quot;mi regla necesita actualizarse&quot;. Fallo la formulacion, no fallo yo. Esa distancia compasiva permite seguir pensando.</p>
+<p>Esto tambien es cuidado clinico e intelectual. Cuando te aferras a una categoria para no sentir duda, puedes dejar de ver. Cuando destruyes todas las categorias para sentirte sofisticado, tambien puedes dejar de ayudar. El punto medio es mas exigente: usar la herramienta, declarar su limite y seguir escuchando la realidad cuando se niega a entrar completa en tu casillero.</p>
+<p>Ese punto medio no siempre se siente bien. A veces se siente como caminar con menos suelo. Pero tambien es mas honesto. Y, para mi, mas humano: permite dudar sin abandonar la responsabilidad de decidir.</p>
+<p>Esa es la madurez que busco: no certeza teatral, no duda infinita, sino una confianza que puede cambiar de peso. Suena menos brillante, pero permite cuidar mejor lo que no encaja y seguir pensando sin cerrar demasiado rapido, ni por miedo.</p>
+<h2 id="el-miedo-honesto">El miedo honesto</h2>
+<p>Aqui aparecio un miedo muy real para mi: sobre que cimientos estaba lo que sabia?</p>
+<p>Cuando hablaba con gente inteligente de otros campos, o cuando miraba casos que no entraban limpio en mis categorias, sentia una inseguridad de fondo. No era solo &quot;no se este dato&quot;. Era algo mas incomodo:</p>
+<pre><code>Verdaderamente se esto?
+O solo tengo etiquetas de Nivel 1?</code></pre>
+<p>Esa pregunta puede dar verguenza. Tambien puede salvarte.</p>
+<p>Nivel 3 no consiste en despreciar las reglas. Consiste en preguntar cuando fallan, que evidencia rival merecen y que version mas honesta puedes escribir despues. En psiquiatria, eso significa usar categorias con respeto y sospecha saludable al mismo tiempo. Dos cosas pueden ser ciertas: necesitamos lenguaje compartido y ese lenguaje no debe volverse jaula. [E-C18-02] [E-C18-04]</p>
+<h2 id="el-output-verificable">El output verificable</h2>
+<p>El output de este caso es una formulacion que no se arrodilla ante la categoria, pero tampoco la tira por la ventana.</p>
+<pre><code>Categoria inicial:
+
+Para que sirve:
+comunicacion / decision / investigacion / acceso / guia clinica
+
+Datos que calzan:
+
+Datos que no calzan:
+
+Trayectoria:
+que pasa en el tiempo
+
+Alternativas plausibles:
+
+Contexto que cambia la lectura:
+
+Evidencia que cambiaria mi confianza:
+
+Posterior provisional:
+cuanto creo ahora la categoria y con que limite
+
+Nueva regla:
+la categoria orienta cuando X, pero debo ampliar formulacion cuando Y</code></pre>
+<p>Eso entrena criterio. No te deja quedarte en &quot;todo es relativo&quot;, que tambien es una forma floja de pensar. Te obliga a hacer una actualizacion concreta. [E-C18-03]</p>
 <h2 id="el-patron-comun">El patron comun</h2>
-<p>En todos los casos, la excepcion hace el mismo trabajo:</p>
+<p>En este caso, la excepcion hace el mismo trabajo:</p>
 <pre><code>Interrumpe comodidad.
 Revela supuesto oculto.
 Obliga a mirar evidencia rival.
@@ -294,8 +286,8 @@ Ahora la version honesta es esta.</code></pre>
 </tr>
 <tr>
 <td>E-C18-01</td>
-<td>En IA, ahorro de tiempo debe evaluarse contra aprendizaje, autoria y criterio.</td>
-<td>EB-AURA refs 25-28; EB-CRITERIO refs 1-2, 16</td>
+<td>Las categorias diagnosticas son herramientas utiles, pero deben tratarse con limites y contexto, no como realidad completa.</td>
+<td>EB-CRITERIO refs 6-8, 13-15, 25</td>
 </tr>
 <tr>
 <td>E-C18-02</td>
@@ -304,18 +296,18 @@ Ahora la version honesta es esta.</code></pre>
 </tr>
 <tr>
 <td>E-C18-03</td>
-<td>Una cita clasica debe evaluarse por claim, metodo, poblacion, outcome, aplicabilidad y contraevidencia.</td>
-<td>EB-CRITERIO refs 1-5, 19-20, 36</td>
+<td>Una excepcion bien trabajada actualiza la regla, explicita evidencia rival y produce una formulacion mas contextualizada.</td>
+<td>EB-CRITERIO refs 1-5, 19-24, 31-32</td>
 </tr>
 <tr>
 <td>E-C18-04</td>
-<td>Evaluar aprendizaje con IA exige proceso visible, defensa y transferencia, no solo output final.</td>
-<td>EB-AURA refs 25-28; EB-CRITERIO refs 6-8, 15-16</td>
+<td>Tolerar incertidumbre implica distinguir datos que cambian decisiones de busqueda ansiosa de certeza.</td>
+<td>EB-CRITERIO refs 13-15, 25, 31-32</td>
 </tr>
 <tr>
 <td>E-C18-05</td>
-<td>Tolerar incertidumbre implica distinguir datos que cambian decisiones de busqueda ansiosa de certeza.</td>
-<td>EB-CRITERIO refs 13-15, 25, 31-32</td>
+<td>Los case studies ilustran recalibracion de priors; no prueban causalidad del metodo.</td>
+<td>EB-CRITERIO refs 6-8, 15, 23-24</td>
 </tr>
 </table>
 <h2 id="referencias-codificadas">Referencias Codificadas</h2>
@@ -357,11 +349,10 @@ Ahora la version honesta es esta.</code></pre>
     </main>
     <aside class="toc-panel" aria-label="Secciones">
       <h2 class="side-heading">En este capitulo</h2>
-      <ul class="toc-list"><li><a href="#1-ia-si-ahorra-tiempo-conviene">1. IA: &quot;si ahorra tiempo, conviene&quot;</a></li>
-<li><a href="#2-clinica-si-reconozco-el-patron-ya-se-que-es">2. Clinica: &quot;si reconozco el patron, ya se que es&quot;</a></li>
-<li><a href="#3-investigacion-si-el-paper-es-clasico-pesa-mas">3. Investigacion: &quot;si el paper es clasico, pesa mas&quot;</a></li>
-<li><a href="#4-aula-si-el-producto-final-es-bueno-aprendio">4. Aula: &quot;si el producto final es bueno, aprendio&quot;</a></li>
-<li><a href="#5-incertidumbre-si-no-estoy-seguro-necesito-mas-datos">5. Incertidumbre: &quot;si no estoy seguro, necesito mas datos&quot;</a></li>
+      <ul class="toc-list"><li><a href="#la-escena-cuando-la-categoria-no-calza">La escena: cuando la categoria no calza</a></li>
+<li><a href="#la-pregunta-que-protege-el-criterio">La pregunta que protege el criterio</a></li>
+<li><a href="#el-miedo-honesto">El miedo honesto</a></li>
+<li><a href="#el-output-verificable">El output verificable</a></li>
 <li><a href="#el-patron-comun">El patron comun</a></li>
 <li><a href="#la-excepcion-no-es-excusa">La excepcion no es excusa</a></li>
 <li><a href="#tu-propio-case-study">Tu propio case study</a></li>
