@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Aprendiz Experto — App de la Escalera</title>
+<style>
+  :root{
+    --bg:#f6f8f7; --surface:#ffffff; --surface-2:#eef7f5; --ink:#182321;
+    --ink-soft:#344340; --muted:#66736f; --line:#d7dfdc; --line-strong:#b8c6c1;
+    --accent:#0f8f83; --accent-strong:#0b6f66; --warm:#c76546; --blue:#3f63c7;
+    --shadow:0 1px 2px rgba(24,35,33,.06),0 8px 24px rgba(24,35,33,.06);
+    --radius:14px;
+  }
+  html[data-theme="dark"]{
+    --bg:#191919; --surface:#252525; --surface-2:#2f2f2d; --ink:#e9e9e7;
+    --ink-soft:#cfcfca; --muted:#9b9b97; --line:#373737; --line-strong:#4a4a47;
+    --accent:#2dd4bf; --accent-strong:#5eead4; --warm:#e0916f; --blue:#8aa0e8;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-strong);text-decoration:none}
+  header.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;
+    gap:14px;padding:14px 22px;background:color-mix(in srgb,var(--bg) 86%,transparent);
+    backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .brand{font-weight:700;letter-spacing:-.01em;font-size:15px;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--surface-2)}
+  .spacer{flex:1}
+  nav.tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:11px}
+  nav.tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;
+    font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;transition:.15s}
+  nav.tabs button.active{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .iconbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
+    width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:16px;display:grid;place-items:center}
+  .booklink{font-size:13px;font-weight:600;color:var(--muted);border:1px solid var(--line);
+    padding:8px 13px;border-radius:10px;background:var(--surface)}
+  main{max-width:840px;margin:0 auto;padding:30px 22px 80px}
+  .view{display:none;animation:fade .3s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  h1.hero{font-size:30px;letter-spacing:-.02em;margin:.2em 0 .15em;font-weight:800}
+  .lede{color:var(--muted);font-size:15.5px;margin:0 0 26px;max-width:62ch}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+  label.field{display:block;font-weight:700;font-size:13px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--muted);margin-bottom:8px}
+  input[type=text]{width:100%;font:inherit;font-size:16px;padding:13px 15px;border-radius:11px;
+    border:1px solid var(--line-strong);background:var(--bg);color:var(--ink)}
+  input[type=text]:focus{outline:2px solid var(--accent);border-color:transparent}
+  .levelblock{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;background:var(--surface)}
+  .levelblock .lh{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .lvtag{font-size:11px;font-weight:800;color:var(--accent-strong);background:var(--surface-2);
+    padding:3px 9px;border-radius:999px;letter-spacing:.04em}
+  .lvname{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .lvq{color:var(--muted);font-size:13.5px;font-style:italic}
+  .checks{margin-top:10px;display:grid;gap:7px}
+  .checkrow{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);
+    padding:7px 10px;border-radius:9px;cursor:pointer;transition:.12s}
+  .checkrow:hover{background:var(--surface-2)}
+  .checkrow input{margin-top:3px;width:17px;height:17px;accent-color:var(--accent);cursor:pointer}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;border:0;
+    font:inherit;font-weight:700;font-size:15px;padding:14px 24px;border-radius:12px;cursor:pointer;
+    box-shadow:var(--shadow);transition:.15s}
+  .cta:hover{background:var(--accent-strong)}
+  .cta.ghost{background:transparent;color:var(--accent-strong);border:1px solid var(--line-strong);box-shadow:none}
+  .hint{color:var(--muted);font-size:13px;margin-top:10px}
+  /* dashboard */
+  .dashhead{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:22px}
+  .ring{--p:0;width:74px;height:74px;border-radius:50%;flex:none;
+    background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--line) 0);
+    display:grid;place-items:center}
+  .ring span{width:58px;height:58px;border-radius:50%;background:var(--surface);display:grid;place-items:center;
+    font-weight:800;font-size:17px}
+  .ladder{display:grid;gap:8px;margin:8px 0 4px}
+  .step{display:flex;align-items:center;gap:13px;padding:13px 16px;border-radius:12px;border:1px solid var(--line);
+    background:var(--surface);transition:.15s}
+  .step .num{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:14px;
+    background:var(--surface-2);color:var(--muted);flex:none}
+  .step .sname{font-weight:700}
+  .step .srole{color:var(--muted);font-size:13px}
+  .step .stat{margin-left:auto;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px}
+  .step.done{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+  .step.done .num{background:var(--accent);color:#fff}
+  .step.done .stat{background:var(--surface-2);color:var(--accent-strong)}
+  .step.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+  .step.now .num{background:var(--warm);color:#fff}
+  .step.now .stat{background:var(--warm);color:#fff}
+  .step.todo{opacity:.62}
+  .step.todo .stat{background:var(--surface-2);color:var(--muted)}
+  .focusgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:14px 0}
+  .mini{background:var(--surface-2);border-radius:11px;padding:13px 15px}
+  .mini .k{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .mini .v{font-weight:600;margin-top:3px;font-size:14.5px}
+  .promptbox{position:relative;background:var(--bg);border:1px dashed var(--line-strong);border-radius:11px;
+    padding:15px 16px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--ink-soft);
+    white-space:pre-wrap;line-height:1.5}
+  .copybtn{position:absolute;top:10px;right:10px;border:1px solid var(--line-strong);background:var(--surface);
+    color:var(--ink-soft);font:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:8px;cursor:pointer}
+  .copybtn.ok{color:var(--accent-strong);border-color:var(--accent)}
+  .pend{display:grid;gap:6px;margin-top:4px}
+  .pend li{font-size:14px;color:var(--ink-soft)}
+  .sectionlabel{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:22px 0 8px}
+  .aura{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .aura .a{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:13px}
+  .aura .a b{color:var(--accent-strong);font-size:18px}
+  .rule{font-size:14.5px;color:var(--ink-soft);border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-style:italic}
+  .falla{font-size:13.5px;color:var(--warm)}
+  .row-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .empty{text-align:center;color:var(--muted);padding:40px 0}
+  @media(max-width:620px){.focusgrid,.aura{grid-template-columns:1fr 1fr}h1.hero{font-size:24px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span> El Aprendiz Experto</div>
+  <div class="spacer"></div>
+  <nav class="tabs">
+    <button id="tab-intake" class="active" onclick="show('intake')">Intake</button>
+    <button id="tab-dash" onclick="show('dash')">Dashboard</button>
+  </nav>
+  <a class="booklink" href="index.html">El libro ↗</a>
+  <button class="iconbtn" id="themebtn" title="Tema claro/oscuro" onclick="toggleTheme()">◐</button>
+</header>
+
+<main>
+  <!-- ===== VENTANA 1: INTAKE ===== -->
+  <section id="view-intake" class="view active">
+    <h1 class="hero">¿En qué escalón estás?</h1>
+    <p class="lede">No se trata de estudiar más, sino de subir la escalera correcta: Uso → Mapa → Reglas → Excepciones → Sistemas → Creación. Elige un tema y marca, con honestidad, lo que ya puedes hacer. La app ubica tu nivel actual y qué toca después.</p>
+
+    <div class="card">
+      <label class="field" for="dominio">¿Qué tema quieres dominar?</label>
+      <input type="text" id="dominio" placeholder="Ej.: razonamiento clínico dimensional, machine learning, escritura científica…" autocomplete="off">
+      <p class="hint">Tu respuesta personaliza los prompts AURA-AI del dashboard.</p>
+    </div>
+
+    <div id="rubricas"></div>
+
+    <div class="row-actions">
+      <button class="cta" onclick="diagnose()">Ver mi dashboard →</button>
+      <button class="cta ghost" onclick="resetAll()">Limpiar</button>
+    </div>
+    <p class="hint">Criterio: un nivel está consolidado solo si marcas todas sus señales. Tu nivel actual es la primera frontera sin consolidar.</p>
+  </section>
+
+  <!-- ===== VENTANA 2: DASHBOARD ===== -->
+  <section id="view-dash" class="view">
+    <div id="dash-content"></div>
+  </section>
+</main>
+
+<script>
+const LEVELS = [
+  { n:0, name:"Uso", q:"¿Para qué me sirve esto?", role:"Brújula de utilidad",
+    think:"Saliencia, intención, valor, prediction error inicial", output:"Mapa de Utilidad",
+    rubric:[
+      "Sé qué problema, decisión o riesgo toca este tema.",
+      "Sé qué creo ahora y qué podría estar equivocado.",
+      "Sé qué consecuencia tiene ignorarlo.",
+      "Tengo una pregunta viva, no solo curiosidad vaga.",
+      "Tengo un primer output verificable."],
+    falla:"Usar IA para recibir una explicación antes de definir por qué el tema importa.",
+    prompt:`Actúa como brújula de utilidad.
+
+Antes de explicarme [TEMA], ayúdame a encontrar para qué sirve en mi vida, trabajo o estudio.
+
+Dame:
+1. 10 usos concretos.
+2. 5 decisiones que este tema mejora.
+3. 5 errores frecuentes por no entenderlo.
+4. 3 escenarios donde dominarlo cambia el resultado.
+5. 1 primer output verificable que pueda crear hoy.
+
+No expliques el tema todavía. Primero encuentra gravedad.` },
+  { n:1, name:"Mapa", q:"¿Qué existe aquí y cómo se nombra?", role:"Cartógrafo",
+    think:"Representación, lenguaje, taxonomía, límites", output:"Mapa de Dominio",
+    rubric:[
+      "Puedo nombrar las piezas principales del campo.",
+      "Puedo agruparlas por familias.",
+      "Puedo explicar los prerequisitos.",
+      "Distingo conceptos parecidos que se confunden.",
+      "Puedo dibujar los límites del tema.",
+      "Puedo elegir una ruta de aprendizaje.",
+      "Señalo huecos sin vergüenza epistémica."],
+    falla:"Pedir “explícame todo” y creer que una respuesta ordenada equivale a un mapa.",
+    prompt:`Actúa como cartógrafo de aprendizaje.
+
+Quiero aprender [TEMA]. Ya sé que me sirve para [USO].
+
+No me expliques el tema completo todavía. Crea un Mapa de Dominio con:
+1. Definición operativa.
+2. Términos esenciales.
+3. Categorías y subcategorías.
+4. Prerequisitos.
+5. Conceptos vecinos.
+6. Conceptos que suelen confundirse.
+7. Límites del tema.
+8. Ruta sugerida de aprendizaje.
+9. Huecos que debería investigar.
+10. Primer output verificable.
+
+Formato: mapa, no clase.` },
+  { n:2, name:"Reglas", q:"¿Cómo se mueven las piezas?", role:"Entrenador de movimientos",
+    think:"Mecanismo, patrón, algoritmo, predicción", output:"Tabla de Movimientos de Experto",
+    rubric:[
+      "Reconozco patrones sin depender de la explicación de la IA.",
+      "Puedo explicar mecanismos.",
+      "Convierto una regla en pasos ejecutables.",
+      "Predigo qué ocurrirá en un caso nuevo.",
+      "Identifico fallas frecuentes.",
+      "Recibo feedback sin colapsar; actualizo el movimiento."],
+    falla:"Usar la IA como profesor que explica bien, no como entrenador que obliga a intentar, fallar y corregir.",
+    prompt:`Actúa como entrenador de movimientos expertos.
+
+Estoy aprendiendo [TEMA]. Ya tengo un mapa del dominio.
+
+No me des una clase pasiva. Entréname.
+1. Extrae los 5 movimientos expertos más importantes del tema.
+2. Para cada uno, explica qué patrón detecta y qué decisión mejora.
+3. Dame un ejemplo resuelto.
+4. Luego dame un caso nuevo sin resolver para que yo lo intente.
+5. Evalúa mi razonamiento, no solo mi respuesta.
+6. Señala qué movimiento usé mal o no activé.
+7. Dame la regla reconstruida en una frase.` },
+  { n:3, name:"Excepciones", q:"¿Cuándo falla la regla?", role:"Adversario epistémico",
+    think:"Recalibración de priors, evidencia, contraejemplos", output:"Matriz de Recalibración de Priors",
+    rubric:[
+      "Puedo decir qué tan fuerte es una regla.",
+      "Explico de dónde viene mi confianza.",
+      "Nombro evidencia que la sostiene.",
+      "Nombro evidencia que la debilita.",
+      "Identifico una excepción real.",
+      "Cambio la regla sin destruir el mapa."],
+    falla:"Confundir pensamiento crítico con llevar la contra. El objetivo es ajustar la fuerza de una creencia.",
+    prompt:`Actúa como tribunal de evidencia. Te daré una regla de [TEMA].
+
+1. Identifica el prior implícito.
+2. Lista evidencia a favor y en contra.
+3. Separa fuente primaria, revisión, opinión y especulación.
+4. Señala supuestos ocultos.
+5. Crea dos casos: uno donde la regla aplica y otro donde parece aplicar pero no aplica.
+6. Dime qué evidencia debería cambiar mi mente.
+7. Devuélveme una versión recalibrada de la regla.
+
+No inventes fuentes. Si no puedes verificar una, marca incertidumbre.` },
+  { n:4, name:"Sistemas", q:"¿Con qué conversa esto?", role:"Arqueólogo y simulador sistémico",
+    think:"Genealogía, bucles, transferencia, incentivos", output:"Matriz de Conversación del Campo",
+    rubric:[
+      "Explico por qué una idea existe.",
+      "Ubico la conversación a la que pertenece.",
+      "Identifico vecinos, tensiones e influencias.",
+      "Veo bucles e incentivos.",
+      "Uso analogías sin abusar de ellas.",
+      "Digo qué falta entender antes de crear."],
+    falla:"Hacer mapas con flechas y creer que eso es pensamiento sistémico.",
+    prompt:`Actúa como arqueólogo conceptual y simulador sistémico.
+
+Toma este concepto: [TEMA].
+1. Reconstruye qué problema intentó resolver.
+2. Explica su genealogía: de dónde viene y qué campos la influyeron.
+3. Identifica conceptos vecinos y relaciones causales.
+4. Señala bucles, incentivos, restricciones y efectos de segundo orden.
+5. Muestra con qué ideas discute.
+6. Propón analogías útiles con otros campos y marca sus límites.
+7. Dime qué conversación debería entender antes de crear algo nuevo.
+
+No inventes historia ni fuentes. Marca qué es evidencia, inferencia o hipótesis.` },
+  { n:5, name:"Creación", q:"¿Qué puedo aportar?", role:"Co-investigador y auditor",
+    think:"Gap, autoría, estándar, prueba, contribución", output:"Matriz de Contribución de Dominio",
+    rubric:[
+      "Nombro el gap que quiero cerrar.",
+      "Explico la conversación a la que responde.",
+      "Produzco un artefacto verificable.",
+      "Defiendo mi estándar de calidad.",
+      "Muestro evidencia o razonamiento.",
+      "Recibo feedback y reviso.",
+      "Digo qué cambió en mi mapa después de crear."],
+    falla:"Confundir output con creación. En la era IA producir es barato; aportar sigue siendo caro.",
+    prompt:`Actúa como co-investigador y auditor de contribuciones.
+
+Quiero crear algo sobre [TEMA]. No escribas el producto todavía.
+1. Ayúdame a identificar la conversación del campo.
+2. Detecta posibles gaps (evidencia, conocimiento, conflicto, método, población, empírico, práctica, traducción, teoría).
+3. Prioriza máximo 3 gaps por relevancia y factibilidad.
+4. Propón 3 tipos de contribución (explicar, resolver, sintetizar, investigar, construir, enseñar, publicar).
+5. Para cada una define audiencia, estándar, evidencia necesaria, riesgo de superficialidad y prueba mínima.
+6. No produzcas el artefacto hasta que el gap y el estándar estén claros.` }
+];
+const AURA=[["A","Amplifica","¿Qué capacidad mía quiero hacer más grande?"],
+  ["U","Usa","¿Para qué tarea concreta usaré la IA?"],
+  ["R","Razona","¿Qué forma de pensamiento quiero entrenar?"],
+  ["A","Audita","¿Cómo verificaré que el resultado es real, útil y mío?"]];
+const RULE="No le pidas a la IA que te quite el esfuerzo que produce aprendizaje. Pídele que dirija, tensione, audite y haga visible ese esfuerzo.";
+
+const KEY="aprendiz-experto-app";
+let state={theme:"light",dominio:"",checks:LEVELS.map(l=>l.rubric.map(()=>false)),done:false};
+
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s){state=Object.assign(state,s);
+  if(!Array.isArray(state.checks)||state.checks.length!==LEVELS.length)state.checks=LEVELS.map(l=>l.rubric.map(()=>false));}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+function applyTheme(){document.documentElement.setAttribute("data-theme",state.theme==="dark"?"dark":"light");
+  document.getElementById("themebtn").textContent=state.theme==="dark"?"☀":"◐"}
+function toggleTheme(){state.theme=state.theme==="dark"?"light":"dark";applyTheme();save()}
+
+function show(v){document.getElementById("view-intake").classList.toggle("active",v==="intake");
+  document.getElementById("view-dash").classList.toggle("active",v==="dash");
+  document.getElementById("tab-intake").classList.toggle("active",v==="intake");
+  document.getElementById("tab-dash").classList.toggle("active",v==="dash");
+  if(v==="dash")renderDash();window.scrollTo({top:0,behavior:"smooth"})}
+
+function renderIntake(){
+  document.getElementById("dominio").value=state.dominio||"";
+  const wrap=document.getElementById("rubricas");wrap.innerHTML="";
+  LEVELS.forEach((l,i)=>{
+    const b=document.createElement("div");b.className="levelblock";
+    b.innerHTML=`<div class="lh"><span class="lvtag">NIVEL ${l.n}</span><span class="lvname">${l.name}</span><span class="lvq">${l.q}</span></div>`;
+    const cs=document.createElement("div");cs.className="checks";
+    l.rubric.forEach((r,j)=>{
+      const id=`c-${i}-${j}`;
+      const row=document.createElement("label");row.className="checkrow";row.setAttribute("for",id);
+      row.innerHTML=`<input type="checkbox" id="${id}" ${state.checks[i][j]?"checked":""}><span>${r}</span>`;
+      row.querySelector("input").addEventListener("change",e=>{state.checks[i][j]=e.target.checked;save()});
+      cs.appendChild(row);
+    });
+    b.appendChild(cs);wrap.appendChild(b);
+  });
+}
+function resetAll(){state.dominio="";state.checks=LEVELS.map(l=>l.rubric.map(()=>false));state.done=false;save();renderIntake();}
+
+function frontierIndex(){
+  for(let i=0;i<LEVELS.length;i++){if(!state.checks[i].every(Boolean))return i;}
+  return LEVELS.length; // maestría: todos consolidados
+}
+function diagnose(){state.dominio=document.getElementById("dominio").value.trim();state.done=true;save();show("dash");}
+
+function renderDash(){
+  const el=document.getElementById("dash-content");
+  if(!state.done){el.innerHTML=`<div class="empty">Completa el <b>Intake</b> primero para ver tu posición en la escalera.<br><br><button class="cta" onclick="show('intake')">Ir al Intake →</button></div>`;return;}
+  const fi=frontierIndex();
+  const totalChecks=state.checks.flat().length, got=state.checks.flat().filter(Boolean).length;
+  const pct=Math.round(got/totalChecks*100);
+  const tema=state.dominio||"este tema";
+  const mastery=fi>=LEVELS.length;
+  // header
+  let html=`<h1 class="hero">Tu escalera${state.dominio?`: <span style="color:var(--accent-strong)">${escapeHtml(state.dominio)}</span>`:""}</h1>`;
+  html+=`<div class="dashhead"><div class="ring" style="--p:${pct}"><span>${pct}%</span></div>
+    <div><div style="font-weight:800;font-size:18px">${mastery?"Dominio integrado":"Nivel actual: "+LEVELS[fi].n+" · "+LEVELS[fi].name}</div>
+    <div style="color:var(--muted);font-size:14px">${mastery?"Consolidaste las seis señales. Toca crear y volver a empezar con otro tema.":"Esta es tu frontera: el primer nivel sin consolidar. Trabájalo antes de subir."}</div></div></div>`;
+  // ladder
+  html+=`<div class="ladder">`;
+  for(let i=LEVELS.length-1;i>=0;i--){
+    const l=LEVELS[i];const consolidated=state.checks[i].every(Boolean);
+    let cls="todo",stat="Pendiente";
+    if(consolidated){cls="done";stat="Consolidado";}
+    if(i===fi){cls="now";stat="Aquí estás";}
+    const indent=i*10;
+    html+=`<div class="step ${cls}" style="margin-left:${indent}px">
+      <div class="num">${l.n}</div>
+      <div><div class="sname">${l.name}</div><div class="srole">AURA: ${l.role}</div></div>
+      <div class="stat">${stat}</div></div>`;
+  }
+  html+=`</div>`;
+  // focus card
+  if(!mastery){
+    const l=LEVELS[fi];
+    const pend=l.rubric.filter((r,j)=>!state.checks[fi][j]);
+    html+=`<div class="sectionlabel">Foco ahora · Nivel ${l.n} — ${l.name}</div>`;
+    html+=`<div class="card">
+      <div class="focusgrid">
+        <div class="mini"><div class="k">Pregunta</div><div class="v">${l.q}</div></div>
+        <div class="mini"><div class="k">Rol de AURA-AI</div><div class="v">${l.role}</div></div>
+        <div class="mini"><div class="k">Pensamiento que entrenas</div><div class="v">${l.think}</div></div>
+        <div class="mini"><div class="k">Output verificable</div><div class="v">${l.output}</div></div>
+      </div>
+      <div class="sectionlabel" style="margin-top:6px">Señales que aún te faltan</div>
+      <ul class="pend">${pend.map(p=>`<li>☐ ${p}</li>`).join("")||"<li>Ninguna: márcalas en el intake.</li>"}</ul>
+      <div class="sectionlabel">Prompt AURA-AI para este nivel</div>
+      <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">Copiar</button><span class="ptext">${escapeHtml(l.prompt.replace(/\[TEMA\]/g,tema))}</span></div>
+      <div class="sectionlabel">Falla típica a evitar</div>
+      <div class="falla">⚠ ${l.falla}</div>
+    </div>`;
+  } else {
+    const l=LEVELS[5];
+    html+=`<div class="card"><div class="sectionlabel">Sigues en Nivel 5 — Creación</div>
+      <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">Copiar</button><span class="ptext">${escapeHtml(l.prompt.replace(/\[TEMA\]/g,tema))}</span></div></div>`;
+  }
+  // AURA universal
+  html+=`<div class="sectionlabel">Protocolo AURA — antes de cualquier prompt</div>`;
+  html+=`<div class="aura">${AURA.map(a=>`<div class="a"><b>${a[0]}</b> ${a[1]}<div style="color:var(--muted);font-size:12.5px;margin-top:4px">${a[2]}</div></div>`).join("")}</div>`;
+  html+=`<div style="height:16px"></div><div class="rule">${RULE}</div>`;
+  html+=`<div class="row-actions" style="margin-top:22px">
+    <button class="cta ghost" onclick="show('intake')">↺ Rehacer intake</button>
+    <a class="cta" href="index.html" style="text-decoration:none">Leer el libro →</a></div>`;
+  el.innerHTML=html;
+}
+function copyPrompt(btn){const t=btn.parentElement.querySelector(".ptext").textContent;
+  navigator.clipboard.writeText(t).then(()=>{btn.textContent="¡Copiado!";btn.classList.add("ok");
+    setTimeout(()=>{btn.textContent="Copiar";btn.classList.remove("ok")},1600)}).catch(()=>{})}
+function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+load();applyTheme();renderIntake();if(state.done){/* stay on intake but dash ready */}
+</script>
+</body>
+</html>
